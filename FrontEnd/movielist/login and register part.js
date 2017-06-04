@@ -75,6 +75,9 @@ function login_register_part() {
     $("#close").click(function() { // 关闭弹窗
         if ($("#login-register").css("visibility") == "visible") {
             $("#login-register").css("visibility", "hidden");
+            $(".error").each(function(index, el) {
+                $(el).css("visibility", "hidden");
+            });
             $("body").css("height", "auto");
             $("body").css("overflow", "unset");
             document.onmousewheel = function() {
