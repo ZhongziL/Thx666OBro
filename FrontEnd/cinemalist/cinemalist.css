@@ -23,3 +23,163 @@ div {
 a {
     text-decoration: none;
 }
+
+/*top bar 与众不同时尚时尚最时尚*/
+#top-bar {
+    border-bottom: 2px solid #c3263e;
+}
+
+#cinema-part {
+    margin: 30px auto;
+    max-width: 1280px;
+    background: white;
+    padding: 0 30px 0 30px;
+    border: 2px solid #eeeeee;
+}
+
+#cinema-head {
+    width: calc(100%-120px);
+}
+
+#cinema-location {
+    border-bottom-style: solid;
+    border-bottom-color: #eeeeee;
+    border-bottom-width: 2px;
+    height: 60px;
+}
+
+#cinema-location p {
+    display: inline-block;
+    height: 60px;
+    width: 160px;
+    line-height: 60px;
+    font-size: 17px;
+    color: #b5b5b5;
+    margin: 0;
+}
+
+#cinema-location select {
+    position: relative;
+    border-width: 0;
+    width: 80px;
+    margin-right: 80px;
+    font-size: 16px;
+    color: #b5b5b5;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background-image: url(res/arrow.png);
+    background-position: right;
+    background-repeat: no-repeat;
+}
+
+#cinema-location select span {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 0;
+}
+
+#cinema-choices {
+    width: 100%;
+    border-width: 0;
+    border-bottom: 2px solid #eeeeee;
+    padding: 0;
+    margin: 0;
+}
+
+#cinema-choices tr,
+#cinema-choices td {
+    padding: 0;
+}
+
+#cinema-choices p {
+    display: inline-block;
+    height: 60px;
+    width: 160px;
+    line-height: 60px;
+    font-size: 17px;
+    color: #b5b5b5;
+    margin: 0;
+}
+
+#cinema-choices ul {
+    padding: 0;
+    margin: 0;
+}
+
+#cinema-choices li {
+    display: inline-block;
+    width: 150px;
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+    color: #b5b5b5;
+}
+
+#cinema-choices a {
+    display: inline-block;
+    height: 60px;
+    width: 90px;
+    line-height: 60px;
+    font-size: 12px;
+    color: #b5b5b5;
+    margin: 0;
+}
+
+#cinema-message {
+    width: 100%;
+}
+
+#cinema-message td {
+    border-bottom: 1px solid #eeeeee;
+    padding: 30px 0 28px 0;
+    vertical-align: top;
+}
+
+#cinema-message td img {
+    width: 185px;
+    height: 130px;
+}
+
+#cinema-message td:first-child {
+    width: 315px;
+}
+
+#cinema-message td p:first-child {
+    width: 100%;
+    font-size: 16px;
+    color: black;
+}
+
+#cinema-message td p:nth-child(2) {
+    width: 100%;
+    font-size: 16px;
+    color: #b5b5b5;
+}
+
+#cinema-message td:nth-child(3) {
+    width: 137px;
+}
+
+#cinema-message button {
+    width: 137px;
+    height: 30px;
+    border-width: 0;
+    font-size: 16px;
+    color: white;
+    background-color: #c3263e;
+}
+
+#more-cinema {
+    text-align: center;
+    width: 100%;
+    font-size: 16px;
+    padding-top: 10px;
+    padding-bottom: 100px;
+}
+
+#more-cinema a {
+    margin: auto;
+    color: #b5b5b5;
+}

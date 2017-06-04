@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>cinemalist</title>
     <link rel="stylesheet" type="text/css" href="login and register part.css">
@@ -9,6 +10,7 @@
     <script type="text/javascript" src="login and register part.js"></script>
     <script type="text/javascript" src="cinemalist.js"></script>
 </head>
+
 <body>
     <div id="login-register">
         <div id="register-part">
@@ -18,7 +20,7 @@
                 <span id="error-num" class="error">请输入11位手机号码</span>
                 <input type="password" name="password" placeholder="请输入6-20位密码，必须包含字母和数字">
                 <i id="eye" class="see-able"></i>
-                <span id="error-pwd" class="error" >请输入6-20位密码，必须包含字母和数字</span>
+                <span id="error-pwd" class="error">请输入6-20位密码，必须包含字母和数字</span>
                 <input type="text" name="check-word" placeholder="请输入验证码">
                 <button type="button" id="get-check-word">获取验证码</button>
                 <!-- <img id="check-img" src="res/check.png"> -->
@@ -36,7 +38,7 @@
                 <a href="">首页</a>
             </div>
             <div class="top-bar-link">
-            <!-- TODO: 修改这里的地址 -->
+                <!-- TODO: 修改这里的地址 -->
                 <a href="../movielist/movielist.html">电影</a>
             </div>
             <div class="top-bar-link" id="selected">
@@ -53,5 +55,91 @@
             </div>
         </div>
     </div>
+    <div id="cinema-part">
+        <div id="cinema-head">
+            <div id="cinema-location">
+                <p>位置</p>
+                <select id="province">
+                    <option value="" selected>-省份-</option>
+                    <option value="guangdong">广东省</option>
+                </select>
+                <select id="city">
+                    <option value="" selected>-城市-</option>
+                    <option value="guangzhou">广州市</option>
+                </select>
+                <select id="area">
+                    <option value="" selected>-行政区-</option>
+                    <option value="daxuecheng">大学城</option>
+                </select>
+            </div>
+            <table id="cinema-choices">
+                <tr>
+                    <td>
+                        <p>影院</p>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>百度糯米</li>
+                            <li>百度糯米</li>
+                            <li>百度糯米</li>
+                            <li>百度糯米</li>
+                            <li>百度糯米</li>
+                            <li>百度糯米</li>
+                        </ul>
+                    </td>
+                    <td><a href="">更多>></a></td>
+                </tr>
+            </table>
+        </div>
+        <!-- 一个 tr 对应一个影院 -->
+        <table id="cinema-message">
+            <tr>
+                <td>
+                    <img src="res/cinema (1).png">
+                </td>
+                <td>
+                    <div>
+                        <p>影院名字</p>
+                        <p>影院信息</p>
+                    </div>
+                </td>
+                <td>
+                    <button>查询订票</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="res/cinema (1).png">
+                </td>
+                <td>
+                    <div>
+                        <p>影院名字</p>
+                        <p>影院信息</p>
+                    </div>
+                </td>
+                <td>
+                    <button>查询订票</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="res/cinema (1).png">
+                </td>
+                <td>
+                    <div>
+                        <p>影院名字</p>
+                        <p>影院信息</p>
+                    </div>
+                </td>
+                <td>
+                    <button>查询订票</button>
+                </td>
+            </tr>
+        </table>
+        <div id="more-cinema">
+            <a href="">显示更多影院</a>
+        </div>
+    </div>
 </body>
+
 </html>
