@@ -1,8 +1,4 @@
 function play_video() {
-    function getVideoSrc(movie_name) {
-        return "http://player.youku.com/player.php/sid/XMTUzOTM5MjAxNg==/v.swf";
-    }
-
     $(".play").each(function(index, button) {
         $(button).click(function(event) {
             $("#play-video").css('visibility', 'visible');
