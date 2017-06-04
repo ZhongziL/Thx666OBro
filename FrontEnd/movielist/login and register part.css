@@ -80,14 +80,6 @@ a#login {
     width: 300px!important; 
 }
 
-#check-img {
-    width: 100px;
-    height: 46px;
-    margin-left: 30px;
-    margin-right: 30px;
-    vertical-align: bottom;
-}
-
 [name="check-word"],
 [name="check-word"]+img {
     display: inline!important;
@@ -107,7 +99,7 @@ span.error {
     visibility: hidden;
 }
 
-#login-register button {
+#login + button {
     display: block;
     width: 504px;
     height: 40px;
@@ -118,6 +110,20 @@ span.error {
     font-size: 18px;
     background-color: #C4263F;
     color: white;
+}
+
+#get-check-word {
+    width: 130px;
+    height: 42px;
+    margin-left: 30px;
+    border-radius: 5px;
+    border-style: none;
+    vertical-align: bottom;
+    background-color: #C4263F;
+}
+
+#get-check-word:hover {
+    cursor: pointer;
 }
 
 #login-register p {
