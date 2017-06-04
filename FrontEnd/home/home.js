@@ -1,10 +1,10 @@
-console.log("load home.js");
 window.onload = function() {
     login_register_part();
 
-    // TODO 买票，需跳页面带参数
+    // TODO: 买票，需跳页面带参数
     function buy_ticket(movie_name) {
         console.log(movie_name);
+        // window.location.href="http://www.baidu.com"; 
     }
 
     function DirectionClick(num, direct) {
