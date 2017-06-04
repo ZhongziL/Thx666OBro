@@ -13,6 +13,7 @@
     "connect": "^3.6.2",
     "connect-mongo": "^1.3.2",
     "cookie-parser": "^1.4.3",
+    "crypto": "0.0.3",
     "ejs": "^2.5.6",
     "express": "^4.15.3",
     "express-session": "^1.15.3",
@@ -20,6 +21,8 @@
     "mongodb": "^2.2.28",
     "mongoose": "^4.10.4",
     "pug": "^2.0.0-rc.2",
-    "util": "^0.10.3"
+    "spidex": "^2.2.1",
+    "util": "^0.10.3",
+    "xmldom": "^0.1.27"
   }
 }

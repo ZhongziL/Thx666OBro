@@ -31,7 +31,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'html');
 app.engine('html', require('ejs').renderFile);
 
-require('./controllers/main_controller')(app);
+require('./routers/auth_router')(app);
 app.listen(5000);
 
 console.log("the web-server is running on 'localhost:5000'");

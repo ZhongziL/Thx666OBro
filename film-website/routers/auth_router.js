@@ -1,4 +1,7 @@
 module.exports = function(app) {
+	var user = require('./controllers/user_controller');
+	var sms = require('./controllers/ihuyi.js');
+	
 	app.get('/', function(req, res) {
 		console.log('request to route /');
 		res.send('Hello World');
@@ -15,6 +18,8 @@ module.exports = function(app) {
 		}
 	});
 
+	app.post('/login', user.login);
+
 	app.get('/register', function(req, res){
 		console.log('request to register page');
 		if(req.session.user) {
@@ -24,4 +29,6 @@ module.exports = function(app) {
 			res.render('auth/register');
 		}
 	});
+
+	app.post('/register', user.register);
 }
