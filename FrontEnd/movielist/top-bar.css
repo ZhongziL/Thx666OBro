@@ -84,6 +84,7 @@
 
 #head-icon {
     position: absolute;
+    z-index: 2;
     right: 20px;
     top: 17px;
     width: 34px;
@@ -98,3 +99,26 @@
     cursor: pointer;
 }
 
+#logout {
+    position: absolute;
+    visibility: hidden;
+    z-index: 1;
+    right: 0px;
+    top: 17px;
+    width: 80px;
+    height: 80px;
+}
+
+#logout > button {
+    position: absolute;
+    bottom: 0;
+    width: 80px;
+    height: 40px;
+    border-width: 0;
+    background-color: #e3263e;
+    color: white;
+}
+
+#logout > button:hover {
+    cursor: pointer;
+}
