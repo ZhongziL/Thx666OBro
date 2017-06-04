@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>cinemalist</title>
+    <link rel="stylesheet" type="text/css" href="login and register part.css">
+    <link rel="stylesheet" type="text/css" href="top-bar.css">
+    <link rel="stylesheet" type="text/css" href="cinemalist.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript" src="login and register part.js"></script>
+    <script type="text/javascript" src="cinemalist.js"></script>
+</head>
+<body>
+    <div id="login-register">
+        <div id="register-part">
+            <h1>用户注册<span id="close">×</span></h1>
+            <form>
+                <input type="text" name="phonenum" placeholder="请输入11位手机号码">
+                <span id="error-num" class="error">请输入11位手机号码</span>
+                <input type="password" name="password" placeholder="请输入6-20位密码，必须包含字母和数字">
+                <i id="eye" class="see-able"></i>
+                <span id="error-pwd" class="error" >请输入6-20位密码，必须包含字母和数字</span>
+                <input type="text" name="check-word" placeholder="请输入验证码">
+                <button type="button" id="get-check-word">获取验证码</button>
+                <!-- <img id="check-img" src="res/check.png"> -->
+                <span id="error-check" class="error">验证码错误，请重新输入</span>
+                <input type="checkbox" name="agree">
+                <span>已阅读并同意<a href="http://www.baidu.com">用户注册协议</a></span>
+                <a id="login">已有账号，去登录</a>
+                <button type="button">注册</button>
+            </form>
+        </div>
+    </div>
+    <div id="top-bar">
+        <div>
+            <div class="top-bar-link">
+                <a href="">首页</a>
+            </div>
+            <div class="top-bar-link">
+            <!-- TODO: 修改这里的地址 -->
+                <a href="../movielist/movielist.html">电影</a>
+            </div>
+            <div class="top-bar-link" id="selected">
+                <!-- TODO: 修改这里的地址 -->
+                <a href="https://www.baidu.com">影院</a>
+            </div>
+            <img id="head-icon" src="res/icon.png" title="头像">
+            <div id="logout">
+                <button>退出登录</button>
+            </div>
+            <div id="search-bar">
+                <input id="search-bar-input" type="text" name="keyword" placeholder="输入电影名称">
+                <a href="http://www.baidu.com"><img src="res/tmp.png" id="search-bar-img"></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
