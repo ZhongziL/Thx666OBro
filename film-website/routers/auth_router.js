@@ -1,6 +1,7 @@
 module.exports = function(app) {
 	var user = require('./controllers/user_controller');
 	var sms = require('./controllers/ihuyi.js');
+	var send_message = new sms();
 	
 	app.get('/', function(req, res) {
 		console.log('request to route /');
