@@ -3,6 +3,9 @@ body {
     font-family: "Microsoft YaHei", 微软雅黑;
     font-size: 0px;
     background: white;
+    background-image: url(res/bg.png);
+    background-position: bottom;
+    background-repeat: no-repeat;
     min-width: 1000px;
     width: 100%;
     -moz-user-select: none;
