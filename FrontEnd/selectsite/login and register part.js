@@ -4,8 +4,6 @@ function login_register_part() {
     var password_input = $("[name='password']");
     var check_word_input = $("[name='check-word']");
 
-
-
     // 输入限制
     phone_num_input.keyup(function() {
         var reg = new RegExp('[0-9]+');
