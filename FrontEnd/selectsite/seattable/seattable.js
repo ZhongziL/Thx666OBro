@@ -1,5 +1,4 @@
 window.onload = function() {
-    // TODO: 点击座位和父页面的交互
     $(".seat").each(function(index, el) {
         var seat = new Array(2);
         $(el).click(function() {
@@ -14,6 +13,8 @@ window.onload = function() {
                 seat[0] = el.getAttribute("row");
                 seat[1] = el.getAttribute("col");
                 parent.addSeat(seat);
+                // TODO: 普通座票价
+                parent.renew_count(1, 10);
             } else if ($(el).attr('class').indexOf("cp-right-select") !== -1) { // 当前被选（情侣座右） => 切到空
                 $(el).removeClass('cp-right-select');
                 $(el).addClass('cp-right');
@@ -27,6 +28,8 @@ window.onload = function() {
                 seat[0] = $(el).prev('li')[0].getAttribute("row");
                 seat[1] = $(el).prev('li')[0].getAttribute("col");
                 parent.rmSeat(seat);
+                // TODO: 情侣座票价
+                parent.renew_count(-2, -2*10);
             } else if ($(el).attr('class').indexOf("cp-left-select") !== -1) { // 当前被选（情侣座左） => 切到空
                 $(el).removeClass('cp-left-select');
                 $(el).addClass('cp-left');
@@ -41,6 +44,8 @@ window.onload = function() {
                 seat[0] = $(el).next('li')[0].getAttribute("row");
                 seat[1] = $(el).next('li')[0].getAttribute("col");
                 parent.rmSeat(seat);
+                // TODO: 情侣座票价
+                parent.renew_count(-2, -2*10);
             } else if ($(el).attr('class').indexOf("select") !== -1) { // 当前被选（普通座） => 切到空
                 $(el).removeClass('select');
                 $(el).addClass('empty');
@@ -49,6 +54,8 @@ window.onload = function() {
                 seat[0] = el.getAttribute("row");
                 seat[1] = el.getAttribute("col");
                 parent.rmSeat(seat);
+                // TODO: 普通座票价
+                parent.renew_count(-1, -1*10);
             } else if ($(el).attr('class').indexOf("cp-left") !== -1) { // 座位为空（情侣座左） => 切到被选
                 $(el).removeClass('cp-left');
                 $(el).addClass('cp-left-select');
@@ -63,6 +70,8 @@ window.onload = function() {
                 seat[0] = $(el).next('li')[0].getAttribute("row");
                 seat[1] = $(el).next('li')[0].getAttribute("col");
                 parent.addSeat(seat);
+                // TODO: 情侣座票价
+                parent.renew_count(2, 2*10);
             } else if ($(el).attr('class').indexOf("cp-right") !== -1) { // 座位为空（情侣座右） => 切到被选
                 $(el).removeClass('cp-right');
                 $(el).addClass('cp-right-select');
@@ -77,6 +86,8 @@ window.onload = function() {
                 seat[0] = el.getAttribute("row");
                 seat[1] = el.getAttribute("col");
                 parent.addSeat(seat);
+                // TODO: 情侣座票价
+                parent.renew_count(2, 2*10);
             }
         });
     });
