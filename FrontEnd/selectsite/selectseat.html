@@ -3,6 +3,7 @@
 
 <head>
     <title>selectseat</title>
+    <meta charset="UTF-8"/>
     <link rel="stylesheet" type="text/css" href="login and register part.css">
     <link rel="stylesheet" type="text/css" href="top-bar.css">
     <link rel="stylesheet" type="text/css" href="selectseat.css">
@@ -14,83 +15,83 @@
 <body>
     <div id="login-register">
         <div id="register-part">
-            <h1>�û�ע��<span id="close">��</span></h1>
+            <h1>用户注册<span id="close">×</span></h1>
             <form>
-                <input type="text" name="phonenum" placeholder="������11λ�ֻ�����">
-                <span id="error-num" class="error">������11λ�ֻ�����</span>
-                <input type="password" name="password" placeholder="������6-20λ���룬���������ĸ������">
+                <input type="text" name="phonenum" placeholder="请输入11位手机号码">
+                <span id="error-num" class="error">请输入11位手机号码</span>
+                <input type="password" name="password" placeholder="请输入6-20位密码，必须包含字母和数字">
                 <i id="eye" class="see-able"></i>
-                <span id="error-pwd" class="error">������6-20λ���룬���������ĸ������</span>
-                <input type="text" name="check-word" placeholder="��������֤��">
-                <button type="button" id="get-check-word">��ȡ��֤��</button>
+                <span id="error-pwd" class="error">请输入6-20位密码，必须包含字母和数字</span>
+                <input type="text" name="check-word" placeholder="请输入验证码">
+                <button type="button" id="get-check-word">获取验证码</button>
                 <!-- <img id="check-img" src="res/check.png"> -->
-                <span id="error-check" class="error">��֤���������������</span>
+                <span id="error-check" class="error">验证码错误，请重新输入</span>
                 <input type="checkbox" name="agree">
-                <span>���Ķ���ͬ��<a href="http://www.baidu.com">�û�ע��Э��</a></span>
-                <a id="login">�����˺ţ�ȥ��¼</a>
-                <button type="button">ע��</button>
+                <span>已阅读并同意<a href="http://www.baidu.com">用户注册协议</a></span>
+                <a id="login">已有账号，去登录</a>
+                <button type="button">注册</button>
             </form>
         </div>
     </div>
     <div id="top-bar">
         <div>
             <div class="top-bar-link">
-                <a href="">��ҳ</a>
+                <a href="">首页</a>
             </div>
             <div class="top-bar-link">
-                <!-- TODO: �޸�����ĵ�ַ -->
-                <a href="../movielist/movielist.html">��Ӱ</a>
+                <!-- TODO: 修改这里的地址 -->
+                <a href="../movielist/movielist.html">电影</a>
             </div>
             <div class="top-bar-link" id="selected">
-                <!-- TODO: �޸�����ĵ�ַ -->
-                <a href="https://www.baidu.com">ӰԺ</a>
+                <!-- TODO: 修改这里的地址 -->
+                <a href="https://www.baidu.com">影院</a>
             </div>
-            <img id="head-icon" src="res/icon.png" title="ͷ��">
+            <img id="head-icon" src="res/icon.png" title="头像">
             <div id="logout">
-                <button>�˳���¼</button>
+                <button>退出登录</button>
             </div>
             <div id="search-bar">
-                <input id="search-bar-input" type="text" name="keyword" placeholder="�����Ӱ����">
+                <input id="search-bar-input" type="text" name="keyword" placeholder="输入电影名称">
                 <a href="http://www.baidu.com"><img src="res/tmp.png" id="search-bar-img"></a>
             </div>
         </div>
     </div>
 
     <div id="process-bar">
-        <p class="finished">1.ѡ���Ӱ����</p>
+        <p class="finished">1.选择电影场次</p>
         <span>></span>
-        <p class="finished">2.ѡ�������ֻ���</p>
-        <p class="todo">3.�ύ��֧������</p>
+        <p class="finished">2.选座并填手机号</p>
+        <p class="todo">3.提交并支付订单</p>
         <span>></span>
-        <p class="todo">4.ӰԺ�ն�ȡƱ</p>
+        <p class="todo">4.影院终端取票</p>
     </div>
     <div id="select-seat">
         <iframe name="seat_table" src="seattable/seattable.html"></iframe>
         <div id="right-part">
             <div id="movie-message">
                 <img src="res/poster.jpg">
-                <p id="movie-name">��Ӱ����</p>
-                <p>Ƭ����<span id="movie-length">100����</span></p>
-                <p>�汾��<span id="movie-version">Ӣ�� 2D</span></p>
+                <p id="movie-name">电影名称</p>
+                <p>片长：<span id="movie-length">100分钟</span></p>
+                <p>版本：<span id="movie-version">英语 2D</span></p>
             </div>
             <div id="cinema-message">
-                <p>ӰԺ��<span id="cinema-name">ӰԺ����</span></p>
-                <p>Ӱ����<span id="cinema-room">3����</span></p>
-                <p>���Σ�<span id="cinema-session">����3:20-4:50</span></p>
+                <p>影院：<span id="cinema-name">影院名称</span></p>
+                <p>影厅：<span id="cinema-room">3号厅</span></p>
+                <p>场次：<span id="cinema-session">下午3:20-4:50</span></p>
             </div>
             <div id="selected-seats">
-                <p>��λ</p>
-                <p id="no-select">δѡ����λ</p>
+                <p>座位</p>
+                <p id="no-select">未选择座位</p>
                 <ul>
-                    <li>x��x��</li>
-                    <li>x��x��</li>
-                    <li>x��x��</li>
-                    <li>x��x��</li>
+                    <li>x排x座</li>
+                    <li>x排x座</li>
+                    <li>x排x座</li>
+                    <li>x排x座</li>
                 </ul>
-                <p>Ʊ����4��</p>
-                <p>Ʊ�ۣ���40.00</p>
+                <p>票数：4张</p>
+                <p>票价：￥40.00</p>
             </div>
-            <button>ȷ�Ϲ�Ʊ</button>
+            <button>确认购票</button>
         </div>
     </div>
 
