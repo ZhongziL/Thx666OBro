@@ -1,7 +1,11 @@
 window.onload = function () {
     login_register_part();
+};
+
+function addSeat(seat) {
+    console.log("add " + seat);
 }
 
-function baba() {
-    alert("baba");
+function rmSeat(seat) {
+    console.log("rm " + seat);
 }
