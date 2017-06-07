@@ -10,17 +10,45 @@
 
 <body>
     <div id="screen">
-        <div><p>��Ļ</p></div>
+        <div>
+            <p>屏幕</p>
+        </div>
     </div>
     <ul id="seats">
         <li>
             <ul class="row">
-                <li id="seat"></li>
+            <!-- row 和 col 是自定义属性，在生成这个页面的时候加上去，方便前台获取相关信息 -->
+                <li row=1 col=1 class="seat empty"></li>
+                <li class="seat cp-left"></li>
+                <li class="seat cp-right"></li>
+                <li class="seat select"></li>
+            </ul>
+        </li>
+        <li>
+            <ul class="row">
+                <li class="seat selected"></li>
+                <li class="seat cp-left-selected"></li>
+                <li class="seat cp-right-selected"></li>
+                <li class="seat select"></li>
+            </ul>
+        </li>
+        <li>
+            <ul class="row">
+                <li class="seat selected"></li>
+                <li class="seat cp-left-select"></li>
+                <li class="seat cp-right-select"></li>
+                <li class="seat select"></li>
+            </ul>
+        </li>
+        <li>
+            <ul class="row">
+                <li class="seat"></li>
+                <li class="seat"></li>
+                <li class="seat"></li>
+                <li class="seat"></li>
             </ul>
         </li>
     </ul>
-
-
 </body>
 
 </html>

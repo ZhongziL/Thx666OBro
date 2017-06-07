@@ -64,7 +64,35 @@
         <span>></span>
         <p class="todo">4.影院终端取票</p>
     </div>
-    <iframe name="seat_table" src="seattable/seattable.html"></iframe>
+    <div id="select-seat">
+        <iframe name="seat_table" src="seattable/seattable.html"></iframe>
+        <div id="right-part">
+            <div id="movie-message">
+                <img src="res/poster.jpg">
+                <p id="movie-name">电影名称</p>
+                <p>片长：<span id="movie-length">100分钟</span></p>
+                <p>版本：<span id="movie-version">英语 2D</span></p>
+            </div>
+            <div id="cinema-message">
+                <p>影院：<span id="cinema-name">影院名称</span></p>
+                <p>影厅：<span id="cinema-room">3号厅</span></p>
+                <p>场次：<span id="cinema-session">下午3:20-4:50</span></p>
+            </div>
+            <div id="selected-seats">
+                <p>座位</p>
+                <p id="no-select">未选择座位</p>
+                <ul>
+                    <li>x排x座</li>
+                    <li>x排x座</li>
+                    <li>x排x座</li>
+                    <li>x排x座</li>
+                </ul>
+                <p>票数：4张</p>
+                <p>票价：￥40.00</p>
+            </div>
+            <button>确认购票</button>
+        </div>
+    </div>
 
 </body>
 
