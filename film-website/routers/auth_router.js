@@ -1,11 +1,16 @@
+var express = require('express');
+
 module.exports = function(app) {
-	var user = require('./controllers/user_controller');
-	var sms = require('./controllers/ihuyi.js');
+	var user = require('../controllers/user_controller.js');
+	var sms = require('../controllers/ihuyi.js');
 	var send_message = new sms();
+
+	app.use('/static', express.static('./static'));
 	
 	app.get('/', function(req, res) {
 		console.log('request to route /');
-		res.send('Hello World');
+		res.render('home/home');
+		//res.send('Hello World');
 	});
 
 	app.get('/login', function(req, res) {
