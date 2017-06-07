@@ -1,16 +1,3 @@
-/* *
- * 接口类型：互亿无线触发短信接口，支持发送验证码短信、订单通知短信等。
- * 账户注册：请通过该地址开通账户http://sms.ihuyi.com/register.html
- * 注意事项：
-*（1）调试期间，请用默认的模板进行测试，默认模板详见接口文档；
- *（2）请使用APIID（查看APIID请登录用户中心->验证码、通知短信->帐户及签名设置->APIID）及 APIkey来调用接口，APIkey在会员中心可以获取；
-*（3）该代码仅供接入互亿无线短信接口参考使用，客户可根据实际需要自行编写；
-*/
-
-/**
- * Created by XadillaX on 14-2-12.
- * https://github.com/XadillaX/ihuyi106js
- */
 var request = require('request');
 String.prototype.replaceAll = function(reallyDo, replaceWith, ignoreCase) {
     if (!RegExp.prototype.isPrototypeOf(reallyDo)) {
@@ -23,13 +10,7 @@ String.prototype.replaceAll = function(reallyDo, replaceWith, ignoreCase) {
 var dom = require('xmldom').DOMParser;
 
 var _baseUri = "http://106.ihuyi.com/webservice/sms.php?method=Submit";
-//var _userAgent = "node-ihuyi106-module by 死月 (admin@xcoder.in)";
 
-/**
- * iHuyi constructure.
- * @param account  查看用户名请登录用户中心->验证码、通知短信->帐户及签名设置->APIID
- * @param password 查看密码请登录用户中心->验证码、通知短信->帐户及签名设置->APIKEY
- */
 var iHuyi = function() {
     this.spidex = require("spidex");
     //this.spidex.setDefaultUserAgent(_userAgent);
