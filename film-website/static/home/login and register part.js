@@ -21,33 +21,82 @@ function login_register_part() {
         }
     });
 
+    $('#lo').click(function(event) {
+        get_url = "/logout";
+        $.get(get_url, function(data, textStatus, xhr) {
+                if (textStatus == "success") { // 登录或注册成功
+                    alert('logout');
+                    //alert('the message has already seen to the telnumber');
+                }
+            }
+        ).error(function(err, data) {
+                alert('error');
+        });
+    });
+
+    $('#getcode').click(function(event) {
+        username_input = $("input[name='phonenum']").val();
+
+        post_url = "/check_tel";
+
+
+        $.post(post_url, {
+                username: username_input,
+            }, function(data, textStatus, xhr) {
+                if (textStatus == "success") { // 登录或注册成功
+                    //alert('please login');
+                    alert('the message has already seen to the telnumber');
+                }
+            }
+            
+        ).error(function(err, data) {
+                alert('error');
+        });
+
+    });
+
     $("#login+button").click(function(event) { // 注册或登录
         //$("#login+button").attr('disabled', 'disabled');
-        // 包装数据
-        username_input = $("[name='phonenum']").html();
-        password_input = $("[name='password']").html();
-        check_word_input = $("[name='check-word']").html();
+
+        // 包装数据  .html()拿不到值
+        username_input = $("input[name='phonenum']").val();
+        password_input = $("input[name='password']").val();
+        check_word_input = $("input[name='check-word']").val();
 
         // TODO: 未完善
         if ($("#login+button").html() == "注册")
+            //post_url = "/register";
             post_url = "/register";
         else
-            post_url = "/register";
+            post_url = "/login";
 
 
         $.post(post_url, {
                 username: username_input,
                 password: password_input,
                 check_word: check_word_input
-            },
-            function(data, textStatus, xhr) {
-                if (textStatus == "true") { // 登录或注册成功
-                    document.cookie = data.split(";")[0];
+            }, function(data, textStatus, xhr) {
+                //alert(data);
+                //alert(textStatus);
+                
+                if (textStatus == "success") { // 登录或注册成功
+                    alert('login success');
+                    //alert('the message has already seen to the telnumber');
+                    location.href = 'http://localhost:5000/';
+                    //windows.location('http://localhost:5000/login');
+                    //document.cookie = data.split(";")[0];
                 }
-                login_status();
-                return false;
+                //
+                //login_status();
+                //return false;
             }
-        );
+            
+        ).error(function(err, data) {
+                //alert(data);
+                alert('error');
+        });
+
+        //return false;
 
     });
 

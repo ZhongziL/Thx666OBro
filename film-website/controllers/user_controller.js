@@ -1,6 +1,10 @@
 var crypto = require('crypto');
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
+var sms = require('./ihuyi.js');
+var message = new sms();
+var txt_front = "您的验证码是：";
+var txt_back = "。请不要把验证码泄露给其他人。";
 
 function hashPW(password) {
 	return crypto.createHash('sha256').update(password)
@@ -8,33 +12,132 @@ function hashPW(password) {
 }
 
 exports.login = function(req, res){
-	var jsondata = '';
-	req.on('data', function(chunk){
-		jsondata += chunk;
-	});
+	if(req.session.user) {
+		res.status(404);
+		res.end();
+	} else {
+	var username = req.body.username;
+	var password = hashPW(req.body.password);
 
-	req.on('end', function(){
-		var dataObj = JSON.parse(jsondata);
-		var reqObj = {
-			username : 'hello ' + dataObj.username,
-			password : dataObj.password
-		};
-		res.writeHead(200);
-		res.end(JSON.stringify(reqObj));
-	});
-};
-
-exports.register = function(req, res){
-	console.log('fuck');
-	console.log(req.body.username);
-	console.log(req.body.password);
-	console.log(req.body.check_word);
-	res.statusCode = 200;
 	var data = {
-		msg: "fuck"
+		username: username
 	};
 	data = JSON.stringify(data);
-	console.log(data);
-	res.write(data);
-	res.end();
+
+	User.findOne({username: username})
+		.exec(function(err, user) {
+			if(user) {
+				if(user.password_hash == password) {
+					req.session.user = user;
+					req.session.msg = 'success';
+					res.status(200).json(data);
+					res.end();
+				} else {
+					req.session.msg = 'password error';
+					res.status(404);
+					res.end();
+				}
+			} else {
+				req.session.msg = 'no user';
+				res.status(404);
+				res.end();
+			}
+	});
+	}
 };
+
+exports.logout = function(req, res) {
+	if(req.session.user){
+		req.session.destroy(function(){
+			res.status(200);
+			res.end();
+		});
+	} else {
+		res.status(404);
+		res.end();
+	}
+}
+
+exports.register = function(req, res){
+	if(req.session.user) {
+		res.status(404);
+		res.end();
+	} else {
+	var code = req.session.code;
+	var username = req.body.username;
+	var password = hashPW(req.body.password);
+	//console.log(username, password);
+	//console.log(req);
+	//console.log(code + " " + req.body.check_word);
+
+	var data = {
+		username: username
+	};
+	data = JSON.stringify(data);
+	//console.log(data);
+	//res.sendStatus(404);
+	//res.send(data);
+
+	if(code == req.body.check_word && code != '') {
+		var user = new User({username: req.body.username});
+		user.set('password_hash', hashPW(req.body.password));
+		user.save(function(err) {
+			if(err) {
+				console.log(err);
+				//req.session.error = 'error';
+				res.status(404);
+				res.end();
+			} else {
+				//console.log("you");
+				req.session.msg = 'success';
+				res.status(200).json(data);
+				res.end();
+			}
+		});
+		//res.status(200);
+	} else {
+		//console.log('fuck you');
+		res.status(404);
+		res.end();
+	}
+	}
+
+	/*if(req.body.username == '18819253726') {
+		req.session.msg = 'success';
+		res.status(200).json(data);
+	} else {
+		res.status(404);
+	}*/
+	//res.end();
+};
+
+exports.check_tel = function(req, res){
+	var code = Math.round(Math.random()*8999+1000);
+	var telnumber = req.body.username;
+	var txt = txt_front + code + txt_back;
+	console.log(telnumber + " " + code);
+	//console.log(txt);
+
+	User.findOne({username: telnumber})
+		.exec(function(err, user){
+			if(user) {
+				req.session.msg = 'telnumber is already exist';
+				res.status(404);
+				res.end();
+				//return;
+			} else {
+				//req.session.msg = 'the telnumber is free';
+				message.send(telnumber, txt, function(err, status){
+					if(err){
+						console.log(err);
+					} else {
+						console.log(status);
+					}
+				});
+				req.session.code = code.toString();
+				res.status(200);
+				res.end();
+				//return;
+			}			
+	});
+}

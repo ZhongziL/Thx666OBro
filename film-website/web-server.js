@@ -15,7 +15,9 @@ var conn = mongoose.connect('mongodb://localhost:27017/mydatabase');
 //console.log(conn.connections[0].collections);
 
 var app = express();
-app.use(bodyParser());  		//req.body
+app.use(bodyParser());
+//app.use(bodyParser.text());  //req.body
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser('ZhongziL')); 	//req.cookie
 app.use(session({
 	secret: 'ZhongziL',

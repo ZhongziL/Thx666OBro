@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var TicketSchema = new Schema({
-	user_name: {type: String, required: true},
-	film_name: {type: String, required: true},
+	user_name: {type: String},
+	film_name: {type: String},
 	timestamp: {type: Date},
 	seat: {type: String},
 	price: {type: String},

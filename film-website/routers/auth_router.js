@@ -13,6 +13,11 @@ module.exports = function(app) {
 		//res.send('Hello World');
 	});
 
+	app.post('/', function(req,res) {
+		console.log('post to /');
+		res.render('home/home');
+	});
+
 	app.get('/login', function(req, res) {
 		console.log('request to login page');
 		if(req.session.user) {
@@ -37,4 +42,8 @@ module.exports = function(app) {
 	});
 
 	app.post('/register', user.register);
+
+	app.post('/check_tel', user.check_tel);
+
+	app.get('/logout', user.logout);
 }
