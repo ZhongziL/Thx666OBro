@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>orderlist</title>
-    <link type="text/css" href="orderlist.css"/>
-    <link type="text/css" href="top-bar.css" />
-    <link type="text/css" href="login and register part.css" />
+    <link rel="stylesheet" type="text/css" href="login and register part.css">
+    <link rel="stylesheet" type="text/css" href="top-bar.css">
+    <link rel="stylesheet" type="text/css" href="orderlist.css">
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
     <script type="text/javascript" src="login and register part.js"></script>
     <script type="text/javascript" src="orderlist.js"></script>
@@ -53,6 +53,77 @@
                 <a href="http://www.baidu.com"><img src="res/tmp.png" id="search-bar-img"></a>
             </div>
         </div>
+    </div>
+    <div id="main_part">
+        <div id="order-list-type">
+            <p class="order-list-chosen">全部订单</p>
+            <p>未付款订单</p>
+        </div>
+        <div id="table-head">
+            <div>
+                <p>电影</p>
+                <p>影院</p>
+                <p>数量</p>
+                <p>总价</p>
+                <p>状态</p>
+            </div>
+        </div>
+        <ul id="order-list">
+            <li>
+                <div class="movie-col">
+                    <p>电影名称</p>
+                    <p>2017年6月8日</p>
+                    <p>00:00</p>
+                </div>
+                <div class="cinema-col">
+                    <p>影院名称</p>
+                    <p>一号厅</p>
+                    <ul>
+                        <li>x排x座</li>
+                        <li>x排x座</li>
+                        <li>x排x座</li>
+                    </ul>
+                </div>
+                <div class="count-col">
+                    <p>3张</p>
+                </div>
+                <div class="money-col">
+                    <p>￥30.00</p>
+                </div>
+                <div class="status-col">
+                    <p>等待支付</p>
+                    <!--TODO 订单详情的链接-->
+                    <p><a href="">订单详情</a></p>
+                </div>
+            </li>
+            <li>
+                <div class="movie-col">
+                    <p>电影名称</p>
+                    <p>2017年6月8日</p>
+                    <p>00:00</p>
+                </div>
+                <div class="cinema-col">
+                    <p>影院名称</p>
+                    <p>一号厅</p>
+                    <ul>
+                        <li>x排x座</li>
+                        <li>x排x座</li>
+                        <li>x排x座</li>
+                    </ul>
+                </div>
+                <div class="count-col">
+                    <p>3张</p>
+                </div>
+                <div class="money-col">
+                    <p>￥30.00</p>
+                </div>
+                <div class="status-col">
+                    <p>等待支付</p>
+                    <!--TODO 订单详情的链接-->
+                    <p><a href="">订单详情</a></p>
+                </div>
+            </li>
+        </ul>
     </div>
 </body>
 </html>

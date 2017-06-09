@@ -1,0 +1,191 @@
+body {
+    margin: auto;
+    font-family: "Microsoft YaHei", 微软雅黑, sans-serif;
+    font-size: 0;
+    background: white url(res/bg.png) no-repeat bottom;
+    min-width: 1000px;
+    width: 100%;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+*:focus {
+    outline: none;
+}
+
+div {
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+}
+
+/*top bar 与众不同时尚时尚最时尚*/
+
+#top-bar {
+    border-bottom: 2px solid #c3263e;
+}
+
+/* 列表部分 */
+div#main_part {
+    background-color: white;
+    width: 100%;
+    max-width: 1280px;
+    margin: 50px auto;
+    padding-bottom: 20px;
+}
+
+div#order-list-type {
+    width: 100%;
+    height: 40px;
+    padding-left: 30px;
+}
+
+#order-list-type > p {
+    text-align: center;
+    color: #b5b5b5;
+    display: inline-block;
+    font-size: 16px;
+    height: 40px;
+    width: 120px;
+}
+
+#order-list-type > p.order-list-chosen {
+    border-bottom: solid 4px #c3263e;
+    color: black;
+}
+
+div#table-head {
+    width: calc(100% - 120px);
+    height: 50px;
+    margin: 50px auto 0 auto;
+    padding: 0 30px;
+    background-color: #c3263e;
+}
+
+div#table-head > div {
+    width: 100%;
+}
+
+div#table-head > div > p {
+    height: 50px;
+    display: inline-block;
+    color: white;
+    font-size: 16px;
+    line-height: 50px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+#table-head > div > p:nth-child(1) {
+    width: 25%;
+}
+
+#table-head > div > p:nth-child(2) {
+    width: 45%;
+}
+
+#table-head > div > p:nth-child(3),
+#table-head > div > p:nth-child(4),
+#table-head > div > p:nth-child(5) {
+    width: 10%;
+}
+
+#order-list {
+    width: calc(100% - 124px);
+    margin: 0 auto;
+    padding: 0 30px;
+    border: 2px solid #b5b5b5;
+    list-style: none;
+}
+
+#order-list > li {
+    padding: 0;
+    width: 100%;
+    border-bottom: 2px solid #b5b5b5;
+    margin: 0;
+}
+
+#order-list > li:last-child {
+    border-bottom: 0;
+}
+
+#order-list > li > div {
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    top: 0;
+    vertical-align: top;
+}
+
+div.movie-col {
+    width: 25%;
+}
+
+div.cinema-col {
+    width: 45%;
+}
+
+div.count-col, div.money-col, div.status-col {
+    width: 10%;
+}
+
+div.status-col {
+    width: calc(10% - 20px);
+}
+
+#order-list > li p {
+    display: inline-block;
+    width: 100%;
+    padding: 0;
+}
+
+div.movie-col > p:first-child,
+div.cinema-col > p:first-child,
+div.count-col > p,
+div.money-col > p,
+div.status-col > p:first-child {
+    color: black;
+    font-size: 16px;
+    margin: 17px 0;
+}
+
+div.movie-col > p,
+div.cinema-col > p,
+div.status-col > p {
+    color: #b5b5b5;
+    font-size: 12px;
+    margin: 0;
+}
+
+div.status-col a {
+    color: #c3263e;
+}
+
+div.status-col > p:nth-child(2):hover {
+    cursor: pointer;
+}
+
+div.cinema-col > ul {
+    width: 100%;
+    overflow: hidden;
+    padding: 0;
+}
+
+div.cinema-col li {
+    font-size: 12px;
+    display: inline-block;
+    width: 80px;
+    height: 25px;
+    margin: 5px;
+    line-height: 25px;
+    text-align: center;
+    background-color: #c3263e;
+    color: white;
+}
