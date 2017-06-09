@@ -193,7 +193,14 @@
                         <p>电影名字我也不知道</p>
                     </div>
                     <div class="shade"></div>
-                    <img src="/static/home/res/poster2.jpg">
+                    <form name='picForm' id='picForm' action='javascript:;' method="post" encype = "multipart/form-data" >
+                        <input type="file" name="test" id="j_imgfile">
+                        <button id="up">上传</button>
+                    </form>
+                    <div>
+                        <img src="" id="j_imgPic">
+                    </div>
+                    <!--<img src="/static/home/res/poster2.jpg">-->
                 </li>
             </ul>
             <div class="left-button"></div>

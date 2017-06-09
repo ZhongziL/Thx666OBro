@@ -26,6 +26,7 @@ function login_register_part() {
         $.get(get_url, function(data, textStatus, xhr) {
                 if (textStatus == "success") { // 登录或注册成功
                     alert('logout');
+                    location.href = 'http://localhost:5000/';
                     //alert('the message has already seen to the telnumber');
                 }
             }
@@ -154,4 +155,59 @@ function login_register_part() {
         $("#login-register").css('visibility', 'hidden');
         logout_status();
     }
+
+    $('#up').click(function(event){
+        //alert('159');
+        // 判断上传文件类型
+        objFile = $("input[name='test']").val();
+        //alert(objFile);
+        //$('#j_imgPic').attr('src', objFile);
+        objType = objFile.substring(objFile.lastIndexOf(".")).toLowerCase();
+        //alert(objType);
+        formData = new FormData();
+        file = document.getElementById('j_imgfile').files[0];
+        //alert(file);
+        //formData = $('picForm').formSerialize();
+        formData.append('file', file);
+        //alert($('#picForm')[0]);
+        //alert(formData);
+        //console.log(objType);
+        if(!(objType == '.jpg'||objType == '.png'))
+        {
+            alert("请上传jpg、png类型图片");
+            return false;
+        }else{
+            alert('loading');
+            post_url = "/upload";
+            $.ajax({
+                url: post_url ,
+                type: 'POST',
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    //alert('success');
+                    //alert(data.imgSrc);
+                    $('#j_imgPic').attr('src', data.imgSrc);
+                    /*if(data.msg == 'ok'){
+                        $('#addUpdateMode').modal('toggle');
+                        layer.alert('保存成功', function(index){
+                            $("#queryForm").submit();
+                            layer.close(index);
+                        });
+
+                    }else if(data.msg == 'error'){
+                        layer.alert('保存失败');
+                    }*/
+                },
+                error: function (data) {
+                    alert('出现错误');
+                    //$('#addUpdateMode').modal('toggle');
+                }
+            });
+            //alert('end');
+            return false;
+        }
+    });
 }

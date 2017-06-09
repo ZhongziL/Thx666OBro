@@ -46,4 +46,9 @@ module.exports = function(app) {
 	app.post('/check_tel', user.check_tel);
 
 	app.get('/logout', user.logout);
+
+	app.post('/upload', user.upload);
+	app.post('/preview_pic', user.preview_pic);
+
+	app.get('/avatar', user.get_avatar);
 }
