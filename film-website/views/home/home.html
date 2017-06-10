@@ -4,35 +4,45 @@
 <head>
     <title>Thx666OBro</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="/static/home/home.css">
-    <link rel="stylesheet" type="text/css" href="/static/home/login and register part.css">
-    <link rel="stylesheet" type="text/css" href="/static/home/top-bar.css">
-    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-    <script type="text/javascript" src="/static/home/login and register part.js"></script>
-    <script type="text/javascript" src="/static/home/home.js"></script>
+    <!--DEBUG: 地址先照着本地调试来，push时请改成服务器-->
+    <link rel="stylesheet" type="text/css" href="../../static/home/home.css">
+    <link rel="stylesheet" type="text/css" href="../../static/common/login and register part.css">
+    <link rel="stylesheet" type="text/css" href="../../static/common/top-bar.css">
+    <script type="text/javascript" src="../../static/common/jquery-latest.js"></script>
+    <script type="text/javascript" src="../../static/common/login and register part.js"></script>
+    <script type="text/javascript" src="../../static/home/home.js"></script>
 </head>
 
 <body>
     <div id="login-register">
         <div id="register-part">
-            <h1>用户注册<span id="close">×</span></h1>
-            <!-- form 会自动提交 -->
+            <h1>用户注册<span class="close">×</span></h1>
             <div>
                 <input type="text" name="phonenum" placeholder="请输入11位手机号码">
                 <span id="error-num" class="error">请输入11位手机号码</span>
-                <button id="getcode">获取验证码</button>
                 <input type="password" name="password" placeholder="请输入6-20位密码，必须包含字母和数字">
                 <i id="eye" class="see-able"></i>
-                <span id="error-pwd" class="error">请输入6-20位密码，必须包含字母和数字</span>
+                <span id="error-pwd" class="error" >请输入6-20位密码，必须包含字母和数字</span>
                 <input type="text" name="check-word" placeholder="请输入验证码">
-                <img id="check-img" src="/static/home/res/check.png">
+                <button type="button" id="get-check-word">获取验证码</button>
                 <span id="error-check" class="error">验证码错误，请重新输入</span>
-                <button id="lo">退出登录</button>
                 <input type="checkbox" name="agree">
                 <span>已阅读并同意<a href="http://www.baidu.com">用户注册协议</a></span>
                 <a id="login">已有账号，去登录</a>
-                <button>注册</button>
+                <button type="button">注册</button>
             </div>
+        </div>
+        <div id="avatar-part">
+            <h1>个人信息<span class="close">×</span></h1>
+            <div>
+                <img src="../../static/home/res/icon.png" />
+                <span>预览</span>
+            </div>
+            <p>手机号：<span>13800138000</span></p>
+            <button id="logout">退出登录</button>
+            <button id="select-file">选择文件</button>
+            <input type="file">
+            <button id="upload">上传</button>
         </div>
     </div>
     <div id="top-bar">
@@ -41,20 +51,17 @@
                 <a href="">首页</a>
             </div>
             <div class="top-bar-link">
-            <!-- TODO: 修改这里的地址 -->
+                <!-- TODO: 修改这里的地址 -->
                 <a href="../movielist/movielist.html">电影</a>
             </div>
             <div class="top-bar-link">
                 <!-- TODO: 修改这里的地址 -->
                 <a href="https://www.baidu.com">影院</a>
             </div>
-            <img id="head-icon" src="/static/home/res/icon.png" title="头像">
-            <div id="logout">
-                <button>退出登录</button>
-            </div>
+            <img id="head-icon" src="../../static/home/res/icon.png" title="头像">
             <div id="search-bar">
                 <input id="search-bar-input" type="text" name="keyword" placeholder="输入电影名称">
-                <a href="http://www.baidu.com"><img src="/static/home/res/tmp.png" id="search-bar-img"></a>
+                <a href="http://www.baidu.com"><img src="../../static/home/res/tmp.png" id="search-bar-img"></a>
             </div>
         </div>
     </div>
@@ -63,7 +70,7 @@
             <embed src='http://player.youku.com/player.php/sid/XMTUzOTM5MjAxNg==/v.swf' allowFullScreen='true' quality='high' width='480' height='400' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'></embed>
         </div>
         <div id="video-part-poster" class="show" title="点击播放预告片">
-            <div id="big-poster-img" style="background-image: url(/static/home/res/big-poster.jpg)"></div>
+            <div id="big-poster-img" style="background-image: url(../../static/home/res/big-poster.jpg)"></div>
         </div>
         <div id="video-part-message" class="show" title="点击播放预告片">
             <p>欢乐颂</p>
@@ -82,7 +89,7 @@
                         <p>电影名字我也不知道</p>
                     </div>
                     <div class="shade"></div>
-                    <img src="/static/home/res/poster1.jpg">
+                    <img src="../../static/home/res/poster1.jpg">
                 </li>
                 <li>
                     <button class="buy-ticket">选座购票</button>
@@ -90,7 +97,7 @@
                         <p>电影名字我也不知道</p>
                     </div>
                     <div class="shade"></div>
-                    <img src="/static/home/res/poster2.jpg">
+                    <img src="../../static/home/res/poster2.jpg">
                 </li>
                 <li>
                     <button class="buy-ticket">选座购票</button>
@@ -98,7 +105,7 @@
                         <p>电影名字我也不知道</p>
                     </div>
                     <div class="shade"></div>
-                    <img src="/static/home/res/poster1.jpg">
+                    <img src="../../static/home/res/poster1.jpg">
                 </li>
                 <li>
                     <button class="buy-ticket">选座购票</button>
@@ -106,7 +113,7 @@
                         <p>电影名字我也不知道</p>
                     </div>
                     <div class="shade"></div>
-                    <img src="/static/home/res/poster2.jpg">
+                    <img src="../../static/home/res/poster2.jpg">
                 </li>
                 <li>
                     <button class="buy-ticket">选座购票</button>
@@ -114,7 +121,7 @@
                         <p>电影名字我也不知道</p>
                     </div>
                     <div class="shade"></div>
-                    <img src="/static/home/res/poster1.jpg">
+                    <img src="../../static/home/res/poster1.jpg">
                 </li>
                 <li>
                     <button class="buy-ticket">选座购票</button>
@@ -122,7 +129,7 @@
                         <p>电影名字我也不知道</p>
                     </div>
                     <div class="shade"></div>
-                    <img src="/static/home/res/poster2.jpg">
+                    <img src="../../static/home/res/poster2.jpg">
                 </li>
                 <li>
                     <button class="buy-ticket">选座购票</button>
@@ -130,7 +137,7 @@
                         <p>电影名字我也不知道</p>
                     </div>
                     <div class="shade"></div>
-                    <img src="/static/home/res/check.png">
+                    <img src="../../static/home/res/check.png">
                 </li>
                 <li>
                     <button class="buy-ticket">选座购票</button>
@@ -138,7 +145,7 @@
                         <p>电影名字我也不知道</p>
                     </div>
                     <div class="shade"></div>
-                    <img src="/static/home/res/poster2.jpg">
+                    <img src="../../static/home/res/poster2.jpg">
                 </li>
             </ul>
             <div class="left-button"></div>
@@ -153,7 +160,7 @@
                         <p>电影名字我也不知道</p>
                     </div>
                     <div class="shade"></div>
-                    <img src="/static/home/res/poster1.jpg">
+                    <img src="../../static/home/res/poster1.jpg">
                 </li>
                 <li>
                     <button class="buy-ticket">选座购票</button>
@@ -161,7 +168,7 @@
                         <p>电影名字我也不知道</p>
                     </div>
                     <div class="shade"></div>
-                    <img src="/static/home/res/poster2.jpg">
+                    <img src="../../static/home/res/poster2.jpg">
                 </li>
                 <li>
                     <button class="buy-ticket">选座购票</button>
@@ -169,7 +176,7 @@
                         <p>电影名字我也不知道</p>
                     </div>
                     <div class="shade"></div>
-                    <img src="/static/home/res/poster1.jpg">
+                    <img src="../../static/home/res/poster1.jpg">
                 </li>
                 <li>
                     <button class="buy-ticket">选座购票</button>
@@ -177,7 +184,7 @@
                         <p>电影名字我也不知道</p>
                     </div>
                     <div class="shade"></div>
-                    <img src="/static/home/res/poster2.jpg">
+                    <img src="../../static/home/res/poster2.jpg">
                 </li>
                 <li>
                     <button class="buy-ticket">选座购票</button>
@@ -185,22 +192,7 @@
                         <p>电影名字我也不知道</p>
                     </div>
                     <div class="shade"></div>
-                    <img src="/static/home/res/poster1.jpg">
-                </li>
-                <li>
-                    <button class="buy-ticket">选座购票</button>
-                    <div class="poster-message">
-                        <p>电影名字我也不知道</p>
-                    </div>
-                    <div class="shade"></div>
-                    <form name='picForm' id='picForm' action='javascript:;' method="post" encype = "multipart/form-data" >
-                        <input type="file" name="test" id="j_imgfile">
-                        <button id="up">上传</button>
-                    </form>
-                    <div>
-                        <img src="" id="j_imgPic">
-                    </div>
-                    <!--<img src="/static/home/res/poster2.jpg">-->
+                    <img src="../../static/home/res/poster1.jpg">
                 </li>
             </ul>
             <div class="left-button"></div>
