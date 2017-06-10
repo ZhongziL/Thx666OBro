@@ -28,39 +28,36 @@ function login_register_part() {
     // 绑定组件的事件，这些在不同状态下不会有影响
     var login_toggle = $("#login");
     var login_button = login_toggle.next("button");
-    var check_button = $("#get-check-word");
+    var get_check_word_button = $("#get-check-word");
     login_toggle.click(function () { // 切换登录的按钮
         if (login_toggle.html() === "已有账号，去登录") {
             login_toggle.html("还没有账号，去注册");
-            check_button.css("visibility", "hidden");
-            check_word_input.css("visibility", "hidden");
+            get_check_word_button.attr("disabled", "disabled");
+            get_check_word_button.css('background-color', 'gray');
+            check_word_input.attr("disabled", "disabled");
             login_button.html("登录");
         } else {
             login_toggle.html("已有账号，去登录");
-            check_button.css("visibility", "visible");
-            check_word_input.css("visibility", "visible");
+            get_check_word_button.attr("disabled", false);
+            get_check_word_button.css('background-color', '#C4263F');
+            check_word_input.attr("disabled", false);
             login_button.html("注册");
         }
     });
 
-    check_button.click(function () {  // 获取验证码
+    get_check_word_button.click(function () {  // 获取验证码
         var reg = new RegExp("^[0-9]{11}$");
         var phone_num = phone_num_input.val();
         if (!reg.test(phone_num)) {  // 号码长度不对
             $("#error-num").css('visibility', 'visible');
         } else {
-            var get_check_word_button = $("#get-check-word");
-            get_check_word_button.css({
-                'disabled': 'disabled',
-                'background-color': 'gray'
-            });
+            get_check_word_button.attr("disabled", "disabled");
+            get_check_word_button.css('background-color', 'gray');
             var sec_s = 60; // 60s后才能重新获取
             var clock = setInterval(function () {
                 if (sec_s === 0) {
-                    get_check_word_button.css({
-                        'disabled': '',
-                        'background-color': '#C4263F'
-                    });
+                    get_check_word_button.attr("disabled", false);
+                    get_check_word_button.css('background-color', '#C4263F');
                     get_check_word_button.html("重新获取");
                     clearInterval(clock);
                 } else {
@@ -95,6 +92,8 @@ function login_register_part() {
         $(el).click(function () { // 关闭弹窗
             if (login_register.css("visibility") === "visible") {
                 login_register.css("visibility", "hidden");
+                $("#register-part").css("visibility", "hidden");
+                $("#avatar-part").css("visibility", "hidden");
                 $(".error").each(function (index, el) {
                     $(el).css("visibility", "hidden");
                 });
@@ -133,7 +132,6 @@ function login_register_part() {
         }
 
         if (flag) {
-            // TODO: 未完善
             var post_url = "";
             login_button.attr('disabled', 'disabled');
             login_button.css("background-color", "gray");
@@ -153,7 +151,7 @@ function login_register_part() {
                         login_status();
                     } else {    // 登录失败
                         alert("手机号或者密码错误");
-                        login_button.attr('disabled', '');
+                        login_button.attr('disabled', false);
                         login_button.css("background-color", "#C4263F");
                     }
                 }
