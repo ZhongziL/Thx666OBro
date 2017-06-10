@@ -2,16 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2dd0d202-84ec-476b-a75f-e4f8cdb7e4b5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FrontEnd/confirmorder/res/bg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FrontEnd/confirmorder/res/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FrontEnd/confirmorder/res/poster.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FrontEnd/confirmorder/res/tmp.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FrontEnd/confirmorder/confirmorder.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FrontEnd/confirmorder/confirmorder.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FrontEnd/confirmorder/confirmorder.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FrontEnd/confirmorder/login and register part.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FrontEnd/confirmorder/login and register part.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FrontEnd/confirmorder/top-bar.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -543,46 +533,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Thx666OBro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Thx666OBro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FrontEnd" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="confirmorder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Thx666OBro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Thx666OBro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FrontEnd" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="confirmorder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -1043,7 +993,7 @@
       <workItem from="1496889024507" duration="11413000" />
       <workItem from="1496922614203" duration="5555000" />
       <workItem from="1496969753139" duration="3813000" />
-      <workItem from="1497007358898" duration="22503000" />
+      <workItem from="1497007358898" duration="22524000" />
     </task>
     <task id="LOCAL-00001" summary="idea 文件更新">
       <created>1496807907320</created>
@@ -1115,11 +1065,18 @@
       <option name="project" value="LOCAL" />
       <updated>1497076228376</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="确认订单静态部分完成">
+      <created>1497101530804</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1497101530804</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63577000" />
+    <option name="totallyTimeSpent" value="63598000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -1232,7 +1189,8 @@
     <MESSAGE value="新建购物车页面" />
     <MESSAGE value="购物车静态部分完成" />
     <MESSAGE value="场次选择静态部分完成" />
-    <option name="LAST_COMMIT_MESSAGE" value="场次选择静态部分完成" />
+    <MESSAGE value="确认订单静态部分完成" />
+    <option name="LAST_COMMIT_MESSAGE" value="确认订单静态部分完成" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
