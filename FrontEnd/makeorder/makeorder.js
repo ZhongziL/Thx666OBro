@@ -58,4 +58,6 @@ window.onload = function () {
             });
         })($(lis[i]));
     }
+
+//    TODO: 除了登陆注册，其他事件都还没有写
 };
