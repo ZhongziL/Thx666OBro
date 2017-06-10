@@ -1,4 +1,4 @@
-接口列表，待讨论
+接口列表
 
 登录，注册
  ├ url : /login		/register
@@ -6,27 +6,14 @@
  ├ 数据: 
  		(注册)username:手机号,password:密码（暂时先用明文吧）,checkword:验证码
  		(登录)username:手机号,password:密码（暂时先用明文吧）
- ├ 返回: 字符串，username:用户名;status:true/fals
+ ├ 返回: 字符串，username:用户名;status:true/false
  └ PS  : 全程没有双引号，密码限制为只能用数字和字母，所以不会和其他字符混在一起
 
-手机号查重
- ├ url : 你决定吧
- ├ 方式: Get
- ├ 数据: ?num=手机号
- └ 返回: status:true/false   // 要不要在返回值里带上失败原因
-
-
 请求发送验证码
- ├ url : /sms
+ ├ url : /check_tel
  ├ 方式: Get
  ├ 数据: ?username=手机号       // QueryString
  └ 返回: time:时间戳            // 有效期，设为0表示发送失败
-
-注册时查重
- ├ url : /check
- ├ 方式: Get
- ├ 数据: ?username=手机号       // QueryString
- └ 返回: status:true/false            // true为可用，false为不可用
 
 获取头像链接
  ├ url : 你决定吧
@@ -39,3 +26,14 @@
  ├ 方式: Get
  ├ 数据: ?moviename=电影名字    // QueryString
  └ 返回: 视频的URL
+
+获取电影列表
+ ├ url : 你决定吧
+ ├ 方式: Get
+ ├ 数据: ?type=     // QueryString
+ └ 返回: JSON
+ 			[
+ 			{
+ 				movie-name:电影名,
+ 				poster-url:地址
+ 			},...]

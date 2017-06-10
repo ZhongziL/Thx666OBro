@@ -2,6 +2,7 @@ var express = require('express');
 
 module.exports = function(app) {
 	var user = require('../controllers/user_controller.js');
+	var film = require('../controllers/film_controller.js');
 	var sms = require('../controllers/ihuyi.js');
 	var send_message = new sms();
 
@@ -51,4 +52,6 @@ module.exports = function(app) {
 	app.post('/preview_pic', user.preview_pic);
 
 	app.get('/avatar', user.get_avatar);
+
+	app.get('/add', film.addfilm);
 }
