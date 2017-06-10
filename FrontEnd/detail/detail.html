@@ -27,24 +27,25 @@
                 <span id="error-num" class="error">请输入11位手机号码</span>
                 <input type="password" name="password" placeholder="请输入6-20位密码，必须包含字母和数字">
                 <i id="eye" class="see-able"></i>
-                <span id="error-pwd" class="error">请输入6-20位密码，必须包含字母和数字</span>
+                <span id="error-pwd" class="error" >请输入6-20位密码，必须包含字母和数字</span>
                 <input type="text" name="check-word" placeholder="请输入验证码">
-                <img id="check-img" src="res/check.png">
+                <button type="button" id="get-check-word">获取验证码</button>
+                <!-- <img id="check-img" src="res/check.png"> -->
                 <span id="error-check" class="error">验证码错误，请重新输入</span>
                 <input type="checkbox" name="agree">
                 <span>已阅读并同意<a href="http://www.baidu.com">用户注册协议</a></span>
                 <a id="login">已有账号，去登录</a>
-                <button>注册</button>
+                <button type="button">注册</button>
             </form>
         </div>
     </div>
     <div id="top-bar">
         <div>
-            <div class="top-bar-link" id="selected">
+            <div class="top-bar-link">
                 <a href="">首页</a>
             </div>
-            <div class="top-bar-link">
-                <!-- TODO: 修改这里的地址 -->
+            <div class="top-bar-link" id="selected">
+            <!-- TODO: 修改这里的地址 -->
                 <a href="../movielist/movielist.html">电影</a>
             </div>
             <div class="top-bar-link">
@@ -148,6 +149,7 @@
                     </tr>
                 </table>
             </div>
+            <!-- 一个 tr 对应一个影院 -->
             <table id="cinema-message">
                 <tr>
                     <td>

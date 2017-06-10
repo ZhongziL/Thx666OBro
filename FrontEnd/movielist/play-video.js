@@ -11,8 +11,9 @@ function play_video() {
             movie_name = $(button).parents("li").children('.message').children('.name').html();
             // TODO: URL需补全
             // $.get('?moviename=' + movie_name, function(data) {
-            //     $("#play-video p").after("<embed src='"+ data
-            //         +"' allowFullScreen='true' quality='high' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'></embed>");
+            //     if ($("#play-video").css('visibility') == 'visible')
+            //         $("#play-video p").after("<embed src='"+ data
+            //             +"' allowFullScreen='true' quality='high' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'></embed>");
             // });
         });
     });

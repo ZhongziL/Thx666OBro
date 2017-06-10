@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>selectseat</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="login and register part.css">
+    <link rel="stylesheet" type="text/css" href="top-bar.css">
+    <link rel="stylesheet" type="text/css" href="selectseat.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript" src="login and register part.js"></script>
+    <script type="text/javascript" src="selectseat.js"></script>
+</head>
+
+<body>
+    <div id="login-register">
+        <div id="register-part">
+            <h1>用户注册<span id="close">×</span></h1>
+            <form>
+                <input type="text" name="phonenum" placeholder="请输入11位手机号码">
+                <span id="error-num" class="error">请输入11位手机号码</span>
+                <input type="password" name="password" placeholder="请输入6-20位密码，必须包含字母和数字">
+                <i id="eye" class="see-able"></i>
+                <span id="error-pwd" class="error">请输入6-20位密码，必须包含字母和数字</span>
+                <input type="text" name="check-word" placeholder="请输入验证码">
+                <button type="button" id="get-check-word">获取验证码</button>
+                <!-- <img id="check-img" src="res/check.png"> -->
+                <span id="error-check" class="error">验证码错误，请重新输入</span>
+                <input type="checkbox" name="agree">
+                <span>已阅读并同意<a href="http://www.baidu.com">用户注册协议</a></span>
+                <a id="login">已有账号，去登录</a>
+                <button type="button">注册</button>
+            </form>
+        </div>
+    </div>
+    <div id="top-bar">
+        <div>
+            <div class="top-bar-link">
+                <a href="">首页</a>
+            </div>
+            <div class="top-bar-link">
+                <!-- TODO: 修改这里的地址 -->
+                <a href="../movielist/movielist.html">电影</a>
+            </div>
+            <div class="top-bar-link" id="selected">
+                <!-- TODO: 修改这里的地址 -->
+                <a href="https://www.baidu.com">影院</a>
+            </div>
+            <img id="head-icon" src="res/icon.png" title="头像">
+            <div id="logout">
+                <button>退出登录</button>
+            </div>
+            <div id="search-bar">
+                <input id="search-bar-input" type="text" name="keyword" placeholder="输入电影名称">
+                <a href="http://www.baidu.com"><img src="res/tmp.png" id="search-bar-img"></a>
+            </div>
+        </div>
+    </div>
+
+    <div id="process-bar">
+        <p class="finished">1.选择电影场次</p>
+        <span>></span>
+        <p class="finished">2.选座并填手机号</p>
+        <p class="todo">3.提交并支付订单</p>
+        <span>></span>
+        <p class="todo">4.影院终端取票</p>
+    </div>
+    <div id="select-seat">
+        <iframe name="seat_table" src="seattable/seattable.html"></iframe>
+        <div id="right-part">
+            <div id="movie-message">
+                <img src="res/poster.jpg">
+                <p id="movie-name">电影名称</p>
+                <p>片长：<span id="movie-length">100分钟</span></p>
+                <p>版本：<span id="movie-version">英语 2D</span></p>
+            </div>
+            <div id="cinema-message">
+                <p>影院：<span id="cinema-name">影院名称</span></p>
+                <p>影厅：<span id="cinema-room">3号厅</span></p>
+                <p>场次：<span id="cinema-session">下午3:20-4:50</span></p>
+            </div>
+            <div id="selected-seats">
+                <p>座位</p>
+                <p id="no-select">未选择座位</p>
+                <ul></ul>
+                <p>票数：<span id="count">0张</span></p>
+                <p>票价：￥<span id="money">0.00</span></p>
+            </div>
+            <button>确认购票</button>
+        </div>
+    </div>
+
+</body>
+
+</html>

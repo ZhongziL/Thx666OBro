@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>selectsite</title>
+    <link rel="stylesheet" type="text/css" href="seattable.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript" src="seattable.js"></script>
+</head>
+
+<body>
+    <div id="screen">
+        <div>
+            <p>屏幕</p>
+        </div>
+    </div>
+    <ul id="seats">
+        <li>
+            <ul class="row">
+            <!-- row 和 col 是自定义属性，在生成这个页面的时候加上去，方便前台获取相关信息 -->
+                <li row=1 col=1 class="seat empty"></li>
+                <li row=1 col=2 class="seat cp-left"></li>
+                <li row=1 col=3 class="seat cp-right"></li>
+                <li row=1 col=4 class="seat empty"></li>
+            </ul>
+        </li>
+        <li>
+            <ul class="row">
+                <li row=2 col=1 class="seat selected"></li>
+                <li row=2 col=2 class="seat cp-left-selected"></li>
+                <li row=2 col=3 class="seat cp-right-selected"></li>
+                <li row=2 col=4 class="seat"></li>
+            </ul>
+        </li>
+        <li>
+            <ul class="row">
+                <li row=3 col=1 class="seat selected"></li>
+                <li row=3 col=2 class="seat"></li>
+                <li row=3 col=3 class="seat"></li>
+                <li row=3 col=4 class="seat empty"></li>
+            </ul>
+        </li>
+        <li>
+            <ul class="row">
+                <li row=4 col=1 class="seat"></li>
+                <li row=4 col=2 class="seat"></li>
+                <li row=4 col=3 class="seat"></li>
+                <li row=4 col=4 class="seat"></li>
+            </ul>
+        </li>
+    </ul>
+</body>
+
+</html>
