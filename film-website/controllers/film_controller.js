@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 var Film = mongoose.model('Film');
+//var Show = mongoose.model('Show');
+var Comment = mongoose.model('Comment');
 
 exports.addfilm = function(req, res) {
 	var type = "1";
@@ -38,7 +40,7 @@ exports.addfilm = function(req, res) {
 
 exports.getFilmList = function(req, res) {
 	var type = req.body.type;
-	Film.find({type: type})
+	Film.find({type: "1"})
 		.exec(function(err, films){
 			if(!films) {
 				res.status(404);
@@ -102,3 +104,34 @@ exports.getFilmProfile = function(req, res) {
 			}
 		});
 }
+
+
+exports.getFilmDetail = function(req, res) {
+	var film_name = req.body.film_name;
+	Film.findOne({film_name:film_name})
+		.exec(function(err, film) {
+			if(err) {
+				res.status(404);
+				res.end();
+			} else {
+				var data = {};
+				data.film_msg = {
+					type: film.type,
+					film_name : film.film_name,
+					film_ename : film.film_ename,
+					film_classify : film.film_classify,
+					film_long : film.film_long,
+					film_detail : film.film_detail,
+					picture_url : film.picture_url,
+					video_link : film.video_link,
+					show_date : film.show_date
+				};
+				//data.theaters = Show.get_theater(film.film_name);
+				data.comment = Comment.get_comment(film.film_name);
+				res.status(200).json(data);
+				res.end();
+			}
+		});
+}
+
+

@@ -3,6 +3,7 @@ var express = require('express');
 module.exports = function(app) {
 	var user = require('../controllers/user_controller.js');
 	var film = require('../controllers/film_controller.js');
+	var comment = require('../controllers/comment_controller.js');
 	var sms = require('../controllers/ihuyi.js');
 	var send_message = new sms();
 
@@ -17,6 +18,11 @@ module.exports = function(app) {
 	app.post('/', function(req,res) {
 		console.log('post to /');
 		res.render('home/home');
+	});
+
+	app.get('/film', function(req, res) {
+		console.log('request to route /film');
+		res.render('movielist/movielist');
 	});
 
 	app.get('/login', function(req, res) {
@@ -57,4 +63,9 @@ module.exports = function(app) {
 	app.get('/getFilmList', film.getFilmList);
 	//app.get('/getFilmLink', film.getFilmLink);
 	app.get('/getFilmProfile', film.getFilmProfile);
+
+	app.get('/getFilmDetail', film.getFilmDetail);
+
+	app.get('/get_comment', comment.get_comment);
+	app.post('/add_comment', comment.add_comment);
 }
