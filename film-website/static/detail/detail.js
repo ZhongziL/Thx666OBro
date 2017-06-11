@@ -1,24 +1,25 @@
 window.onload = function () {
     login_register_part();
-    // 事件绑定
-    // var choices = $("#choices").children("p");
-    // $(choices[0]).click(function() {
-    //     if (!$(choices[0]).hasClass("cinema-comment-selected")) {
-    //         $(choices[0]).addClass("cinema-comment-selected");
-    //         $(choices[1]).removeClass("cinema-comment-selected");
-    //         $("#cinema-part").css("visibility", "visible");
-    //         $("#comment-part").css("visibility", "hidden");
-    //     }
-    // });
-    // $(choices[0]).click();
-    // $(choices[1]).click(function() {
-    //     if (!$(choices[1]).hasClass("cinema-comment-selected")) {
-    //         $(choices[1]).addClass("cinema-comment-selected");
-    //         $(choices[0]).removeClass("cinema-comment-selected");
-    //         $("#cinema-part").css("visibility", "hidden");
-    //         $("#comment-part").css("visibility", "visible");
-    //     }
-    // });
+    function play_video(video_url) {
+    movie_name = $("#movie-name").html();
+
+    $("#play").click(function(event) {
+        $("#play-video").css('visibility', 'visible');
+        $("body").css({
+            'height': '100vh',
+            'overflow-y': 'hidden',
+            'overflow-x': 'scroll'
+        });
+        $("#play-video p").after("<embed src='"+ video_url +"' allowFullScreen='true' quality='high' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'></embed>");
+    });
+
+    $("#play-video > p").click(function(event) {
+        $("#play-video").css('visibility', 'hidden');
+        $("#play-video embed").remove();
+        $("body").css("height", "auto");
+        $("body").css("overflow", "unset");
+    });
+}
 
     // TODO: 获取各种信息啊
     var movie_name = window.location.href.split('=')[1];
