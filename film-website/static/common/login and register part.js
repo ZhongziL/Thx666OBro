@@ -227,6 +227,7 @@ function login_register_part() {
     var head_icon = $("#head-icon");
 
     function login_status() {
+        head_icon.unbind("click");
         head_icon.click(function () { // 增加点击弹窗事件
             if (login_register.css("visibility") === "hidden") {
                 login_register.css("visibility", "visible");
@@ -243,17 +244,21 @@ function login_register_part() {
                 };
             }
         });
-        head_icon.mouseover(function () {
-            $("#logout").css('visibility', 'visible');
-        });
-        $("#logout").mouseleave(function () {
-            $("#logout").css('visibility', 'hidden');
+
+        // 填充数据
+        var cookieJson = eval('(' + document.cookie + ')');
+        $("#avatar-part > p > span").html(cookieJson.username);
+        // 请求头像
+        $.get("/get_avatar", function (data) {
+            $("#head-icon").attr('src', data.avatar_url);
+            $("#avatar-part").children("div").children("img").attr('src', data.avatar_url);
         });
     }
 
     // 未登录的情况下的事件绑定
     function logout_status() {
         head_icon.mouseover(null); // 删除鼠标覆盖事件
+        head_icon.unbind("click");
         head_icon.click(function () { // 增加点击弹窗事件
             if (login_register.css("visibility") === "hidden") {
                 login_register.css("visibility", "visible");
@@ -290,12 +295,6 @@ function login_register_part() {
     }
 
     if (username !== "") { // 已登录
-        // 请求头像
-        var url_get = "/get_avatar";
-        $.get(url_get, function (data) {
-            $("#head-icon").attr('src', data.avatar_url);
-            $("#avatar-part").children("div").children("img").attr('src', data.avatar_url);
-        });
         login_status();
     } else { // 未登录
         logout_status();
