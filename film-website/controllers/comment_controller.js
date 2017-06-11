@@ -3,7 +3,7 @@ var Comment = mongoose.model('Comment');
 //var Reply = mongoose.model('Reply');
 
 exports.get_comment = function(req, res) {
-	Comment.find({film_name: req.body.film_name})
+	Comment.find({film_name: req.query.film_name})
 		.exec(function(err, comments) {
 			if(err) {
 				console.log(err);
@@ -12,6 +12,15 @@ exports.get_comment = function(req, res) {
 				//return [];
 			} else {
 				console.log('ok');
+				var commentdata = {data: []};
+				for (comment in comments) {
+					var data = {
+						username: comments[comment].username;
+						content: comments[comment].content;
+						timestamp: comments[comment].timestamp;
+					}
+					commentdata.data.push(data);
+				}
 				res.status(200);
 				res.end();
 				//return comments;

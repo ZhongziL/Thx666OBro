@@ -83,7 +83,7 @@ exports.getFilmLink = function(req, res) {
 
 
 exports.getFilmProfile = function(req, res) {
-	var film_name = req.body.film_name;
+	var film_name = req.query.film_name;
 	Film.findOne({film_name: film_name})
 		.exec(function(err, film) {
 			if(err) {
