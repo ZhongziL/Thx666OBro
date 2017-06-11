@@ -163,11 +163,11 @@ function login_register_part() {
                     },
                     function (data, textStatus) {
                         if (textStatus === "success") { // 登录成功
-                            // 增加cookie 并记录登录时间、设定过期（啊啊啊啊我不知道为什么过期了还不自动删除）
+                            // 增加cookie 并记录登录时间（啊啊啊啊我不知道为什么过期了还不自动删除）
                             var expiresDate = new Date();
-                            var cookieStr =  data.split(";")[0] + ";time=" + expiresDate.getTime();
-                            expiresDate.setTime(expiresDate.getTime() + 60 * 60 * 1000);
-                            document.cookie = cookieStr + ";expires="+expiresDate.toUTCString();
+                            var jsonObj = eval('(' + data + ')');
+                            jsonObj.time = expiresDate.getTime();
+                            document.cookie = JSON.stringify(jsonObj);
                             login_register.css("visibility", "hidden");
                             $("#register-part").css("visibility", "hidden");
                             $("#avatar-part").css("visibility", "hidden");
@@ -274,18 +274,18 @@ function login_register_part() {
 
     // 检查cookie是否已经登录
     var username = "";
-    var login_time = 0;
     if (document.cookie.length !== 0) {
-        var cookies = document.cookie.split(";");
-        cookies.each(function (index, cookie) {
-                if (cookie.index("username=") === 0)
-                    username = cookie.substring("username=".length, cookie.length);
-                else if (cookie.indexOf("time=") === 0)
-                    login_time = parseInt(cookie.substring("time=".length, cookie.length));
-            });
-        if (new Date().getTime() - login_time > 60 * 60 * 1000) { // 确认已经过期
+        var cookieJson = eval('(' + document.cookie + ')');
+        if (typeof(cookieJson.username) === "undefined" ||
+            typeof(cookieJson.time) === "undefined")
             username = "";
-            document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 GMT"; // 删除cookie
+        else {
+            if (new Date().getTime() - parseInt(cookieJson.time) > 60 * 60 * 1000) { // 确认已经过期
+                username = "";
+                document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 GMT"; // 删除cookie
+            } else {
+                username = cookieJson.username;
+            }
         }
     }
 
