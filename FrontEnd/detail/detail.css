@@ -1,14 +1,13 @@
 body {
     margin: auto;
-    font-family: "Microsoft YaHei", 微软雅黑;
-    font-size: 0px;
+    font-family: "Microsoft YaHei", 微软雅黑, serif;
+    font-size: 0;
     background: black;
     min-width: 1000px;
     width: 100%;
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
-    -khtml-user-select: none;
     user-select: none;
 }
 
@@ -34,9 +33,8 @@ a {
     width: 100%;
     min-width: 800px;
     height: calc(100% - 70px);
-    background-image: url(res/bg.webp);
     background-size: cover;
-    background-position: center;
+    background: url(res/bg.webp) center;
 }
 
 #background-poster + img {
@@ -51,10 +49,7 @@ a {
 /*中间的信息部分*/
 
 #message-part {
-    margin-top: 73px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 58px;
+    margin: 73px auto 58px;
     width: 100%;
     max-height: 293px;
     max-width: 1280px;
@@ -70,7 +65,7 @@ a {
     position: relative;
     width: 199px;
     height: 293px;
-    padding: 0px;
+    padding: 0;
 }
 
 #video-poster img {
@@ -84,11 +79,9 @@ a {
     top: 94px;
     width: 85px;
     height: 85px;
-    background-image: url(res/play.png);
     background-size: cover;
-    background-color: rgba(0, 0, 0, 0);
-    border-style: none;
-    border-width: 0px;
+    background: rgba(0, 0, 0, 0) url(res/play.png);
+    border: 0 none;
 }
 
 #play:hover {
@@ -182,7 +175,7 @@ a {
     font-size: 17px;
     margin: 0;
     width: 100px;
-    padding: 10px 0px 9px 10px;
+    padding: 10px 0 9px 10px;
 }
 
 #comment-detail {
@@ -218,7 +211,6 @@ textarea {
     border-width: 0;
 }
 
-
 /*下面的部分*/
 
 #cinema-comment {
@@ -242,10 +234,9 @@ textarea {
     margin: 0;
     text-align: center;
     line-height: 59px;
-    border-width: 4px 0 0 0;
-    border-style: solid;
     color: white;
-    border-color: rgba(0, 0, 0, 0);
+    border: 0 solid rgba(0, 0, 0, 0);
+    border-top-width: 4px;
     background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -253,35 +244,36 @@ textarea {
     cursor: pointer;
 }
 
-p#cinema-comment-selected {
+#choices > p.cinema-comment-selected {
     color: #c3263e;
     border-color: #c3263e;
     background-color: white;
 }
 
-p#cinema-comment-selected:hover {
+#choices > p.cinema-comment-selected:hover {
     cursor: default;
 }
 
-/*影院部分*/
-
-#cinema-part {
+#cinema-part, #comment-part  {
+    position: absolute;
+    top: 63px;
     margin-left: auto;
     margin-right: auto;
     max-width: 1280px;
     padding-left: 65px;
     padding-right: 65px;
     background: white;
+
 }
+/*影院部分*/
+
 
 #cinema-head {
-    width: calc(100%-120px);
+    width: 100%;
 }
 
 #cinema-location {
-    border-bottom-style: solid;
-    border-bottom-color: #eeeeee;
-    border-bottom-width: 2px;
+    border-bottom: 2px solid #eeeeee;
     height: 60px;
 }
 
@@ -305,9 +297,7 @@ p#cinema-comment-selected:hover {
     appearance: none;
     -moz-appearance: none;
     -webkit-appearance: none;
-    background-image: url(res/arrow.png);
-    background-position: right;
-    background-repeat: no-repeat;
+    background: url(res/arrow.png) no-repeat right;
 }
 
 #cinema-location select span {
@@ -418,4 +408,41 @@ p#cinema-comment-selected:hover {
 #more-cinema a {
     margin: auto;
     color: #b5b5b5;
+}
+
+/* 评论部分 */
+
+#comment-part {
+    width: calc(100% - 130px);
+}
+
+#comment-part > ul {
+    width: 100%;
+    margin: 50px 0;
+    padding: 0;
+}
+
+#comment-part > ul > li {
+    list-style: none;
+    width: 100%;
+    font-size: 16px;
+    padding: 10px 0;
+    border: 0 solid #b5b5b5;
+    border-top-width: 1px;
+}
+
+#comment-part > ul > li:last-child {
+    border-bottom-width: 1px;
+}
+
+#comment-part li > p:first-child {
+    color: #b5b5b5;
+}
+
+#comment-part li > p:last-child {
+    color: black;
+}
+
+#comment-part span.comment-user {
+    margin-right: 20px;
 }

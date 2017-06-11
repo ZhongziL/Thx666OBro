@@ -143,7 +143,11 @@ function login_register_part() {
                     },
                     function (data, textStatus) {
                         if (textStatus === "success") { // 注册成功
-                            document.cookie = data.split(";")[0];
+                            // 增加cookie 并记录登录时间（啊啊啊啊我不知道为什么过期了还不自动删除）
+                            var expiresDate = new Date();
+                            var jsonObj = eval('(' + data + ')');
+                            jsonObj.time = expiresDate.getTime();
+                            document.cookie = JSON.stringify(jsonObj);
                             login_register.css("visibility", "hidden");
                             $("#register-part").css("visibility", "hidden");
                             $("#avatar-part").css("visibility", "hidden");
@@ -188,15 +192,15 @@ function login_register_part() {
         document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 GMT"; // 删除cookie
         $.get('/logout?username=' + username);
         $($(".close")[0]).click();
+        login_button.attr('disabled', false);
         logout_status();
     });
 
     var file_input = $('[type="file"]');
     file_input.change(function () {        // 选择头像
-        var img = $("#avatar-part").children("div").children("img");
+        var avatar_part = $("#avatar-part").children("div");
+        var img = avatar_part.children("img");
         img.attr('src', window.URL.createObjectURL(file_input[0].files[0]));
-
-        // $("#avatar-part").children("div").children("img").attr("src", file_input.val());
     });
 
     $("#upload").click(function () {       // 上传头像
@@ -219,6 +223,7 @@ function login_register_part() {
                 processData: false,
                 success: function (data) {
                     $("#avatar-part").children("div").children("img").attr('src', data.imgSrc);
+                    alert("上传成功");
                 },
                 error: function () {
                     alert('出现错误');
