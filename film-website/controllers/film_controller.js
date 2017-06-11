@@ -41,7 +41,7 @@ exports.addfilm = function(req, res) {
 exports.getFilmList = function(req, res) {
 	var type = req.query.type;
 	//console.log(req);
-	console.log(type);
+	//console.log(type);
 	Film.find({type: type})
 		.exec(function(err, films){
 			if(!films) {
@@ -58,7 +58,7 @@ exports.getFilmList = function(req, res) {
 					}
 					data.data.push(filmdata);
 				}
-				console.log(data);
+				//console.log(data);
 				//console.log(data[0]);
 				res.status(200).json(data);
 				res.end();

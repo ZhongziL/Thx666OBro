@@ -20,8 +20,10 @@ module.exports = function(app) {
 		res.render('home/home');
 	});
 
-	app.get('/film', function(req, res) {
-		console.log('request to route /film');
+	app.get('/detail', function(req, res) {
+		var film_name = req.query.film_name;
+		//console.log('request to route /detail');
+		console.log(film_name);
 		res.render('movielist/movielist');
 	});
 
