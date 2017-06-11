@@ -1,5 +1,31 @@
 window.onload = function() {
     login_register_part();
+    // 事件绑定
+    var choices = $("#choices").children("p");
+    $(choices[0]).click(function() {
+        if (!$(choices[0]).hasClass("cinema-comment-selected")) {
+            $(choices[0]).addClass("cinema-comment-selected");
+            $(choices[1]).removeClass("cinema-comment-selected");
+            $("#cinema-part").css("visibility", "visible");
+            $("#comment-part").css("visibility", "hidden");
+        }
+    });
+    $(choices[0]).click();
+    $(choices[1]).click(function() {
+        if (!$(choices[1]).hasClass("cinema-comment-selected")) {
+            $(choices[1]).addClass("cinema-comment-selected");
+            $(choices[0]).removeClass("cinema-comment-selected");
+            $("#cinema-part").css("visibility", "hidden");
+            $("#comment-part").css("visibility", "visible");
+        }
+    });
+
+    // TODO: 获取各种信息啊
+
+
+
+
+
     play_video("http://player.youku.com/player.php/sid/XMjc5ODU5OTU3Ng==/v.swf");
     $("#star-bar").click(function() {
         var x = event.pageX - $("#star-bar").offset().left;
@@ -17,4 +43,6 @@ window.onload = function() {
         else
             $("#your-score").html(score.toFixed(1));
     });
+
+
 };
