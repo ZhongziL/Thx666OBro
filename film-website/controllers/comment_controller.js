@@ -15,9 +15,9 @@ exports.get_comment = function(req, res) {
 				var commentdata = {data: []};
 				for (comment in comments) {
 					var data = {
-						username: comments[comment].username;
-						content: comments[comment].content;
-						timestamp: comments[comment].timestamp;
+						username: comments[comment].username,
+						content: comments[comment].content,
+						timestamp: comments[comment].timestamp
 					}
 					commentdata.data.push(data);
 				}
