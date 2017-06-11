@@ -6,8 +6,8 @@ window.onload = function() {
         $("#star-bar-bottom").width(x);
         $("#star-bar-top").width(270-x);
         x = x - 19;
-        score = Math.ceil(x / 24) - 1;
-        dec = x - score * 24;
+        var score = Math.ceil(x / 24) - 1;
+        var dec = x - score * 24;
         if (dec > 15)
             score += 1;
         else
