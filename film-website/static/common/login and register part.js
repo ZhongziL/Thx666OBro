@@ -122,7 +122,7 @@ function login_register_part() {
             flag = false;
             $("#error-pwd").css('visibility', 'visible');
         }
-        if (!new RegExp("[0-9]{4}").test(check_word)) {
+        if (login_button.html() === "注册" && !new RegExp("[0-9]{4}").test(check_word)) {
             flag = false;
             $("#error-check").css('visibility', 'visible');
         }
@@ -132,35 +132,60 @@ function login_register_part() {
         }
 
         if (flag) {
-            var post_url = "";
             login_button.attr('disabled', 'disabled');
             login_button.css("background-color", "gray");
-            if (login_button.html() === "注册")
-                post_url = "/register";
-            else
-                post_url = "/login";
-            $.post(post_url,
-                { // 数据
-                    username: username,
-                    password: password,
-                    check_word: check_word
-                },
-                function (data, textStatus) {
-                    if (textStatus === "success") { // 登录或注册成功
-                        document.cookie = data.split(";")[0];
-                        login_status();
-                    } else {    // 登录失败
-                        alert("手机号或者密码错误");
-                        login_button.attr('disabled', false);
-                        login_button.css("background-color", "#C4263F");
+            if (login_button.html() === "注册") {
+                $.post("/register",
+                    { // 数据
+                        username: username,
+                        password: password,
+                        check_word: check_word
+                    },
+                    function (data, textStatus) {
+                        if (textStatus === "success") { // 注册成功
+                            document.cookie = data.split(";")[0];
+                            login_register.css("visibility", "hidden");
+                            $("#register-part").css("visibility", "hidden");
+                            $("#avatar-part").css("visibility", "hidden");
+                            login_status();
+                        } else {    // 登录失败
+                            alert("手机号或者密码错误");
+                            login_button.attr('disabled', false);
+                            login_button.css("background-color", "#C4263F");
+                        }
                     }
-                }
-            );
+                );
+            } else if (login_button.html() === "登录") {
+                $.post("/login",
+                    { // 数据
+                        username: username,
+                        password: password
+                    },
+                    function (data, textStatus) {
+                        if (textStatus === "success") { // 登录成功
+                            // 增加cookie 并记录登录时间、设定过期（啊啊啊啊我不知道为什么过期了还不自动删除）
+                            var expiresDate = new Date();
+                            var cookieStr =  data.split(";")[0] + ";time=" + expiresDate.getTime();
+                            expiresDate.setTime(expiresDate.getTime() + 60 * 60 * 1000);
+                            document.cookie = cookieStr + ";expires="+expiresDate.toUTCString();
+                            login_register.css("visibility", "hidden");
+                            $("#register-part").css("visibility", "hidden");
+                            $("#avatar-part").css("visibility", "hidden");
+                            login_status();
+                        } else {    // 登录失败
+                            alert("登录信息错误，请检查后重试");
+                            login_button.attr('disabled', false);
+                            login_button.css("background-color", "#C4263F");
+                        }
+                    }
+                );
+            }
         }
     });
 
     $("#logout").children("button").click(function () { // 切换到未登录
         document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 GMT"; // 删除cookie
+        $.get('/logout&username=' + username);
         logout_status();
     });
 
@@ -202,12 +227,11 @@ function login_register_part() {
     var head_icon = $("#head-icon");
 
     function login_status() {
-        // TODO: 可能需要跳个人页面
         head_icon.click(function () { // 增加点击弹窗事件
             if (login_register.css("visibility") === "hidden") {
                 login_register.css("visibility", "visible");
-                $("#register-part").css("visibility", "hidden");
                 $("#avatar-part").css("visibility", "visible");
+                $("#register-part").css("visibility", "hidden");
                 login_button.css("background-color", "#C4263F");
                 $("body").css({
                     'height': '100vh',
@@ -250,23 +274,30 @@ function login_register_part() {
 
     // 检查cookie是否已经登录
     var username = "";
+    var login_time = 0;
     if (document.cookie.length !== 0) {
         var cookies = document.cookie.split(";");
         cookies.each(function (index, cookie) {
-            if (cookie.index("username=") === 0)
-                username = cookie.substring("username=".length, cookie.length);
-        });
+                if (cookie.index("username=") === 0)
+                    username = cookie.substring("username=".length, cookie.length);
+                else if (cookie.indexOf("time=") === 0)
+                    login_time = parseInt(cookie.substring("time=".length, cookie.length));
+            });
+        if (new Date().getTime() - login_time > 60 * 60 * 1000) { // 确认已经过期
+            username = "";
+            document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 GMT"; // 删除cookie
+        }
     }
 
     if (username !== "") { // 已登录
         // 请求头像
-        var url_get = "/get_avatar?username=" + username;
+        var url_get = "/get_avatar";
         $.get(url_get, function (data) {
             $("#head-icon").attr('src', data.avatar_url);
+            $("#avatar-part").children("div").children("img").attr('src', data.avatar_url);
         });
         login_status();
     } else { // 未登录
         logout_status();
     }
-
 }
