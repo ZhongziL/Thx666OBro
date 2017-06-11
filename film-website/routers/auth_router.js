@@ -20,6 +20,11 @@ module.exports = function(app) {
 		res.render('home/home');
 	});
 
+	app.get('/movielist', function(req, res) {
+		console.log('get movielist');
+		res.render('movielist/movielist');
+	});
+
 	app.get('/detail', function(req, res) {
 		var film_name = req.query.film_name;
 		//console.log('request to route /detail');
@@ -63,6 +68,8 @@ module.exports = function(app) {
 
 	//app.get('/add', film.addfilm);
 	app.get('/getFilmList', film.getFilmList);
+	app.get('/getList', film.getList);
+	app.post('/changeFilmScore', film.changeFilmScore);
 	//app.get('/getFilmLink', film.getFilmLink);
 	app.get('/getFilmProfile', film.getFilmProfile);
 

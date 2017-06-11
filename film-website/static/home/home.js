@@ -31,11 +31,11 @@ window.onload = function () {
             if (num === 0) {
                 var showing = $("#showing-list");
                 ul = showing.children("ul");
-                liCount = showing.children("li").length;
+                liCount = ul.children("li").length;
             } else {
                 var coming = $("#show-soon-list");
                 ul = coming.children("ul");
-                liCount = coming.children("li").length;
+                liCount = ul.children("li").length;
             }
             // 页面容量和左边藏了几个
             var maxCount = $(".list-part")[0].clientWidth / 210;
