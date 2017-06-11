@@ -1,72 +1,109 @@
-window.onload = function() {
+window.onload = function () {
     login_register_part();
 
-    // TODO: 买票，需跳页面带参数
-    function buy_ticket(movie_name) {
-        console.log(movie_name);
-        // window.location.href="http://www.baidu.com"; 
+    // 先获取数据再进行bind
+    function toLi(movieName, posterURL) {
+        return '<li><button class="buy-ticket">选座购票</button><div class="poster-message"><p>' + movieName + '</p></div><div class="shade"></div><img src="' + posterURL + '"></li>';
     }
 
+    $.get('/getFilmList?type=0', function (data, textStatus) {
+        if (textStatus === "success") {
+            var movies = data.data;
+            var ul = $("#showing-list").children("ul.poster-part");
+            movies.forEach(function (el) {
+                ul.append(toLi(el.film_name, el.picture_url));
+            })
+        }
+        var buy_buttons = $("#showing-list .buy-ticket");
+        for (i = buy_buttons.length - 1; i >= 0; i--) {
+            $(buy_buttons[i]).click(
+                (function (i) {
+                    return function () {
+                        var d = $(buy_buttons[i]);
+                        d = d.next();
+                        p = $(d.children());
+                        window.location.href="/detail?movie_name=" + p.text();
+                    };
+                })(i));
+        }
+    });
+
+    $.get('/getFilmList?type=1', function (data, textStatus) {
+        if (textStatus === "success") {
+            var movies = data.data;
+            var ul = $("#show-soon-list").children("ul.poster-part");
+            movies.forEach(function (el) {
+                ul.append(toLi(el.film_name, el.picture_url));
+            })
+        }
+        var buy_buttons = $("#show-soon-list .buy-ticket");
+        for (i = buy_buttons.length - 1; i >= 0; i--) {
+            $(buy_buttons[i]).click(
+                (function (i) {
+                    return function () {
+                        var d = $(buy_buttons[i]);
+                        d = d.next();
+                        p = $(d.children());
+                        window.location.href="/detail?movie_name=" + p.text();
+                    };
+                })(i));
+        }
+    });
+
+
+
     function DirectionClick(num, direct) {
-        return function() {
-            if (num == 0) {
-                ul = $("#showing-list ul");
-                licount = $("#showing-list li").length;
+        return function () {
+            var ul, liCount;
+            if (num === 0) {
+                var showing = $("#showing-list");
+                ul = showing.children("ul");
+                liCount = showing.children("li").length;
             } else {
-                ul = $("#show-soon-list ul");
-                licount = $("#show-soon-list li").length;
+                var coming = $("#show-soon-list");
+                ul = coming.children("ul");
+                liCount = coming.children("li").length;
             }
             // 页面容量和左边藏了几个
-            maxCount = $(".list-part")[0].clientWidth / 210;
-            hidCount = 0 - parseInt(ul.css("margin-left")) / 210;
-            if (licount <= maxCount) // 页面上的就是全部
+            var maxCount = $(".list-part")[0].clientWidth / 210;
+            var hidCount = 0 - parseInt(ul.css("margin-left")) / 210;
+            if (liCount <= maxCount) // 页面上的就是全部
                 return;
 
-            if (direct == "left" && licount - hidCount > maxCount) { // 左边还能藏
+            if (direct === "left" && liCount - hidCount > maxCount) { // 左边还能藏
                 ul.css("margin-left", (0 - (hidCount + 1) * 210) + "px");
-            } else if (direct == "right" && hidCount > 0) {
+            } else if (direct === "right" && hidCount > 0) {
                 ul.css("margin-left", (0 - (hidCount - 1) * 210) + "px");
             }
         };
-    };
-    $(".left-button")[0].onclick = DirectionClick(0, "right");
-    $(".right-button")[0].onclick = DirectionClick(0, "left");
-    $(".left-button")[1].onclick = DirectionClick(1, "right");
-    $(".right-button")[1].onclick = DirectionClick(1, "left");
-
-    function show_prevue() {
-        $("#video-part-poster").removeClass("show");
-        $("#video-part-poster").addClass("hidden");
-        $("#video-part-message").removeClass("show");
-        $("#video-part-message").addClass("hidden");
-    }
-    $("#video-part-poster").click(show_prevue);
-    $("#video-part-message").click(show_prevue);
-
-    buy_buttons = $(".buy-ticket");
-    for (var i = buy_buttons.length - 1; i >= 0; i--) {
-        $(buy_buttons[i]).click(
-            (function(i) {
-                return function() {
-                    d = $(buy_buttons[i]);
-                    d = d.next();
-                    p = $(d.children());
-                    buy_ticket(p.text());
-                };
-            })(i));
     }
 
-    lis = $("li");
+    var left_buttons = $(".left-button");
+    var right_buttons = $(".right-button");
+    left_buttons[0].onclick = DirectionClick(0, "right");
+    right_buttons[0].onclick = DirectionClick(0, "left");
+    left_buttons[1].onclick = DirectionClick(1, "right");
+    right_buttons[1].onclick = DirectionClick(1, "left");
+
+    function show_preview() {
+        $("#video-part-poster").removeClass("show").addClass("hidden");
+        $("#video-part-message").removeClass("show").addClass("hidden");
+    }
+
+    $("#video-part-poster").click(show_preview);
+    $("#video-part-message").click(show_preview);
+
+    var lis = $("li");
     for (var i = lis.length - 1; i >= 0; i--) {
-        (function(li) {
-            li.mouseover(function() {
-                bros = li.siblings();
+        (function (li) {
+            li.mouseover(function () {
+                var bros = li.siblings();
                 for (var j = bros.length - 1; j >= 0; j--) {
                     $(bros[j]).children(".shade").css("visibility", "visible");
                 }
             });
-            li.mouseleave(function() {
-                bros = li.siblings();
+            li.mouseleave(function () {
+                var bros = li.siblings();
                 for (var j = bros.length - 1; j >= 0; j--) {
                     $(bros[j]).children(".shade").css("visibility", "hidden");
                 }
