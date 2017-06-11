@@ -66,7 +66,8 @@ exports.logout = function(req, res) {
 
 exports.register = function(req, res){
 	if(req.session.user) {
-		res.status(404);
+		console.log("user exist");
+		res.status(404).json({msg:"you have already logined"});
 		res.end();
 	} else {
 	var code = req.session.code;
@@ -95,6 +96,7 @@ exports.register = function(req, res){
 				res.end();
 			} else {
 				//console.log("you");
+				req.session.user = user;
 				req.session.msg = 'success';
 				res.status(200).json(data);
 				res.end();
@@ -102,8 +104,8 @@ exports.register = function(req, res){
 		});
 		//res.status(200);
 	} else {
-		//console.log('fuck you');
-		res.status(404);
+		console.log('验证码错误');
+		res.status(404).json({msg: "验证码错误"});
 		res.end();
 	}
 	}

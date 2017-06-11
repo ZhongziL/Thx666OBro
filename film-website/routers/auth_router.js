@@ -49,9 +49,9 @@ module.exports = function(app) {
 	app.get('/logout', user.logout);
 
 	app.post('/upload', user.upload);
-	app.post('/preview_pic', user.preview_pic);
+	//app.post('/preview_pic', user.preview_pic);
 
-	app.get('/avatar', user.get_avatar);
+	app.get('/get_avatar', user.get_avatar);
 
 	//app.get('/add', film.addfilm);
 	app.get('/getFilmList', film.getFilmList);

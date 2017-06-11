@@ -183,15 +183,20 @@ function login_register_part() {
         }
     });
 
-    $("#logout").children("button").click(function () { // 切换到未登录
+    $("#logout").click(function () { // 切换到未登录
+        document.cookie = "";
         document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 GMT"; // 删除cookie
-        $.get('/logout&username=' + username);
+        $.get('/logout?username=' + username);
+        $($(".close")[0]).click();
         logout_status();
     });
 
     var file_input = $('[type="file"]');
     file_input.change(function () {        // 选择头像
-        $("#avatar-part").children("div").children("img").attr("src", file_input.val());
+        var img = $("#avatar-part").children("div").children("img");
+        img.attr('src', window.URL.createObjectURL(file_input[0].files[0]));
+
+        // $("#avatar-part").children("div").children("img").attr("src", file_input.val());
     });
 
     $("#upload").click(function () {       // 上传头像
@@ -287,6 +292,7 @@ function login_register_part() {
         else {
             if (new Date().getTime() - parseInt(cookieJson.time) > 60 * 60 * 1000) { // 确认已经过期
                 username = "";
+                document.cookie = "";
                 document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 GMT"; // 删除cookie
             } else {
                 username = cookieJson.username;
