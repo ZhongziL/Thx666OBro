@@ -5,6 +5,7 @@ var TicketSchema = new Schema({
 	user_name: {type: String},
 	film_name: {type: String},
 	timestamp: {type: Date},
+	theater: {type: String},
 	seat: {type: String},
 	price: {type: String},
 	text: String

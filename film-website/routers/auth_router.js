@@ -53,5 +53,8 @@ module.exports = function(app) {
 
 	app.get('/avatar', user.get_avatar);
 
-	app.get('/add', film.addfilm);
+	//app.get('/add', film.addfilm);
+	app.get('/getFilmList', film.getFilmList);
+	//app.get('/getFilmLink', film.getFilmLink);
+	app.get('/getFilmProfile', film.getFilmProfile);
 }

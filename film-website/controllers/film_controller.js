@@ -41,8 +41,64 @@ exports.getFilmList = function(req, res) {
 	Film.find({type: type})
 		.exec(function(err, films){
 			if(!films) {
-				
+				res.status(404);
+				res.end();
+			} else {
+				//console.log(films);
+				var data = {data: []};
+				for (film in films) {
+					//console.log(films[film]);
+					var filmdata = {
+						film_name: films[film].film_name,
+						picture_url: films[film].picture_url
+					}
+					data.data.push(filmdata);
+				}
+				console.log(data);
+				//console.log(data[0]);
+				res.status(200).json(data);
+				res.end();
 			}
 		});
 }
 
+
+exports.getFilmLink = function(req, res) {
+	var film_name = req.body.film_name;
+	Film.findOne({film_name: film_name})
+		.exec(function(err, film) {
+			if(err) {
+				res.status(404);
+				res.end();
+			} else {
+				res.status(200).json({video_link: film.video_link});
+				res.end();
+			}
+		});
+}
+
+
+exports.getFilmProfile = function(req, res) {
+	var film_name = req.body.film_name;
+	Film.findOne({film_name: film_name})
+		.exec(function(err, film) {
+			if(err) {
+				res.status(404);
+				res.end();
+			} else {
+				var data = {
+					type: film.type,
+					film_name : film.film_name,
+					film_ename : film.film_ename,
+					film_classify : film.film_classify,
+					film_long : film.film_long,
+					film_detail : film.film_detail,
+					picture_url : film.picture_url,
+					video_link : film.video_link,
+					show_date : film.show_date
+				}
+				res.status(200).json(data);
+				res.end();
+			}
+		});
+}

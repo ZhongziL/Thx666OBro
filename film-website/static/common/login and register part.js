@@ -90,12 +90,12 @@ function login_register_part() {
     var login_register = $("#login-register");
     $(".close").each(function (index, el) {
         $(el).click(function () { // 关闭弹窗
-            if (login_register.css("visibility") === "visible") {
-                login_register.css("visibility", "hidden");
-                $("#register-part").css("visibility", "hidden");
-                $("#avatar-part").css("visibility", "hidden");
+            if (login_register.css('visibility') === "visible") {
+                login_register.css('visibility', "hidden");
+                $("#register-part").css('visibility', "hidden");
+                $("#avatar-part").css('visibility', "hidden");
                 $(".error").each(function (index, el) {
-                    $(el).css("visibility", "hidden");
+                    $(el).css('visibility', "hidden");
                 });
                 var body = $("body");
                 body.css("height", "auto");
@@ -144,9 +144,9 @@ function login_register_part() {
                     function (data, textStatus) {
                         if (textStatus === "success") { // 注册成功
                             document.cookie = data.split(";")[0];
-                            login_register.css("visibility", "hidden");
-                            $("#register-part").css("visibility", "hidden");
-                            $("#avatar-part").css("visibility", "hidden");
+                            login_register.css('visibility', "hidden");
+                            $("#register-part").css('visibility', "hidden");
+                            $("#avatar-part").css('visibility', "hidden");
                             login_status();
                         } else {    // 登录失败
                             alert("手机号或者密码错误");
@@ -165,12 +165,12 @@ function login_register_part() {
                         if (textStatus === "success") { // 登录成功
                             // 增加cookie 并记录登录时间、设定过期（啊啊啊啊我不知道为什么过期了还不自动删除）
                             var expiresDate = new Date();
-                            var cookieStr =  data.split(";")[0] + ";time=" + expiresDate.getTime();
+                            var cookieStr =  "username=" + username + ";time=" + expiresDate.getTime();
                             expiresDate.setTime(expiresDate.getTime() + 60 * 60 * 1000);
                             document.cookie = cookieStr + ";expires="+expiresDate.toUTCString();
-                            login_register.css("visibility", "hidden");
-                            $("#register-part").css("visibility", "hidden");
-                            $("#avatar-part").css("visibility", "hidden");
+                            login_register.css('visibility', "hidden");
+                            $("#register-part").css('visibility', "hidden");
+                            $("#avatar-part").css('visibility', "hidden");
                             login_status();
                         } else {    // 登录失败
                             alert("登录信息错误，请检查后重试");
@@ -228,10 +228,10 @@ function login_register_part() {
 
     function login_status() {
         head_icon.click(function () { // 增加点击弹窗事件
-            if (login_register.css("visibility") === "hidden") {
-                login_register.css("visibility", "visible");
-                $("#avatar-part").css("visibility", "visible");
-                $("#register-part").css("visibility", "hidden");
+            if (login_register.css('visibility') === "hidden") {
+                login_register.css('visibility', "visible");
+                $("#avatar-part").css('visibility', "visible");
+                $("#register-part").css('visibility', "hidden");
                 login_button.css("background-color", "#C4263F");
                 $("body").css({
                     'height': '100vh',
@@ -255,10 +255,10 @@ function login_register_part() {
     function logout_status() {
         head_icon.mouseover(null); // 删除鼠标覆盖事件
         head_icon.click(function () { // 增加点击弹窗事件
-            if (login_register.css("visibility") === "hidden") {
-                login_register.css("visibility", "visible");
-                $("#register-part").css("visibility", "visible");
-                $("#avatar-part").css("visibility", "hidden");
+            if (login_register.css('visibility') === "hidden") {
+                login_register.css('visibility', "visible");
+                $("#register-part").css('visibility', "visible");
+                $("#avatar-part").css('visibility', "hidden");
                 login_button.css("background-color", "#C4263F");
                 $("body").css({
                     'height': '100vh',
