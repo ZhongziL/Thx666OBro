@@ -20,7 +20,7 @@ window.onload = function () {
     }
 
 
-    $.get("/getLis", function (data, textStatus) {
+    $.get("/getList", function (data, textStatus) {
         if (textStatus === "success") {
             var movies = data.filmlist;
             movies.forEach(function (el) {
