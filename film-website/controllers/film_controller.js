@@ -39,8 +39,10 @@ exports.addfilm = function(req, res) {
 
 
 exports.getFilmList = function(req, res) {
-	var type = req.body.type;
-	Film.find({type: "1"})
+	var type = req.query.type;
+	//console.log(req);
+	console.log(type);
+	Film.find({type: type})
 		.exec(function(err, films){
 			if(!films) {
 				res.status(404);
