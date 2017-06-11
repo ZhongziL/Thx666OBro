@@ -90,8 +90,10 @@ exports.getFilmProfile = function(req, res) {
 				res.status(404);
 				res.end();
 			} else {
+				console.log(film);
+				console.log(film.type);
 				var data = {
-					type: film.type,
+					//type: film.type,
 					film_name : film.film_name,
 					film_ename : film.film_ename,
 					film_classify : film.film_classify,
@@ -102,6 +104,7 @@ exports.getFilmProfile = function(req, res) {
 					show_date : film.show_date,
 					score: film.score
 				}
+				console.log(data);
 				res.status(200).json(data);
 				res.end();
 			}
@@ -138,7 +141,7 @@ exports.getList = function(req, res) {
 
 
 exports.getFilmDetail = function(req, res) {
-	var film_name = req.body.film_name;
+	var film_name = req.query.film_name;
 	Film.findOne({film_name:film_name})
 		.exec(function(err, film) {
 			if(err) {

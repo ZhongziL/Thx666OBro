@@ -29,7 +29,7 @@ module.exports = function(app) {
 		var film_name = req.query.film_name;
 		//console.log('request to route /detail');
 		console.log(film_name);
-		res.render('movielist/movielist');
+		res.render('detail/detail');
 	});
 
 	app.get('/login', function(req, res) {

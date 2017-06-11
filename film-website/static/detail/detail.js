@@ -21,12 +21,12 @@ window.onload = function () {
     // });
 
     // TODO: 获取各种信息啊
-    var movie_name = window.location.href.split('?')[1];
-    $.get('/getFilmProFile?film_name=' + movie_name, function (data) {
+    var movie_name = window.location.href.split('=')[1];
+    $.get('/getFilmProfile?film_name=' + movie_name, function (data) {
         $("#video-poster img").attr("src", data.picture_url);
         $("#movie-name").html(data.film_name);
         $("#introduce span").html(data.film_detail);
-        $("#movie-language span").html(data.film_classify);
+        $("#movie-language span").html(data.film_ename);
         $("#directior span").html(data.show_date);
         $("#actors span").html(data.score);
         play_video(data.video_url);
@@ -38,8 +38,8 @@ window.onload = function () {
             comments.forEach(function (el) {
                 var date = new Date(el.timeStamp);
                 var dateStr = date.getYear() + date.getMonth() + date.getDay() + " " + date.getHours() + ":" + date.getMinutes();
-                $("#comment-part").append('<li>' +
-                    '<p><span class="comment-user">' + el.username + '</span><span class="comment-time">' + dateStr + '</span></p>' +
+                $("#comment-part ul").append('<li>' +
+                    '<p><span class="comment-user">' + el.username + '</span><span class="comment-time"></span></p>' +
                     '<p class="comment-detail">' + el.content + '</p>' +
                     '</li>');
             });
@@ -51,7 +51,7 @@ window.onload = function () {
         if (username !== "12345678900") {
             $.post("/add_comment", {
                 username: username,
-                file_name: movie_name,
+                film_name: decodeURI(movie_name),
                 content: $("textarea").val()
             }, function (data, textStatus) {
                 if (textStatus === "success")
